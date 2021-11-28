@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MovieWindow</class>
+ <widget class="QWidget" name="MovieWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>416</width>
+    <height>490</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QLabel" name="MovieImageLabel">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>20</y>
+     <width>201</width>
+     <height>221</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>MovieImageLabel</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>270</y>
+     <width>161</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="MovieTitleLabel">
+      <property name="text">
+       <string>Title:</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="MovieYearLabel">
+      <property name="text">
+       <string>Year of Release:</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="MovieDirectorLabel">
+      <property name="text">
+       <string>Director:</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="MovieGenreLabel">
+      <property name="text">
+       <string>Genres:</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="MovieNumSeasonsLabel">
+      <property name="text">
+       <string>Number of Seasons:</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="MovieNumEpisodesLabel">
+      <property name="text">
+       <string>Number of Episodes:</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>250</y>
+     <width>49</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Synopsis</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="MovieSynopsisLabel">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>270</y>
+     <width>151</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>SynopsisLabel</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="FavoriteButton">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>440</y>
+     <width>111</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Add to Favorites</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

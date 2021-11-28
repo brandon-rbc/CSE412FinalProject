@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>S</class>
+ <widget class="QWidget" name="S">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>429</width>
+    <height>486</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QLabel" name="ShowImageLabel">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>10</y>
+     <width>201</width>
+     <height>221</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>ShowImageLabel</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="FavoriteButton">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>440</y>
+     <width>111</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Add to Favorites</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>270</y>
+     <width>161</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <widget class="QLabel" name="ShowTitleLabel">
+      <property name="text">
+       <string>Title:</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="ShowYearLabel">
+      <property name="text">
+       <string>Year of Release:</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="ShowDirectorLabel">
+      <property name="text">
+       <string>Director:</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="ShowGenreLabel">
+      <property name="text">
+       <string>Genres:</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>Runtime:</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>240</y>
+     <width>49</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Synopsis</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="ShowSynopsisLabel">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>260</y>
+     <width>151</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>SynopsisLabel</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
