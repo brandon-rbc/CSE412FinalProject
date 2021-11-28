@@ -41,6 +41,12 @@ def get_images():
         result = cursor.fetchone()
     return img_list
 
+def getNumFavs(id):
+    cursor.execute(f'SELECT COUNT(*) FROM "favoritedBy" '
+                   f'WHERE "favoritedBy".userID = {id};')
+    result = cursor.fetchone()
+    return result[0]
+
 def getSearchMedia(sort_method, search_method, search_query):
     media_list = []
     if search_method == 'Title':
@@ -229,8 +235,9 @@ def getMediaID(name):
     return result[0]
 
 def getShowInfo(name):
+    temp = name.replace("'", "''")
     cursor.execute(f'SELECT * FROM "mediaObject" '
-                   f'WHERE "mediaObject".name = \'{name}\';')
+                   f'WHERE "mediaObject".name = \'{temp}\';')
     result = cursor.fetchone()
     # print(result)
     id, title, synopsis, year, genres, rating = result[0], result[1], result[2], result[3], result[5], result[6]
@@ -253,8 +260,9 @@ def getShowInfo(name):
 
 
 def getMovieInfo(name):
+    temp = name.replace("'", "''")
     cursor.execute(f'SELECT * FROM "mediaObject" '
-                   f'WHERE "mediaObject".name = \'{name}\';')
+                   f'WHERE "mediaObject".name = \'{temp}\';')
     result = cursor.fetchone()
     # print(result)
     id, title, synopsis, year, genres, rating = result[0], result[1], result[2], result[3], result[5], result[6]

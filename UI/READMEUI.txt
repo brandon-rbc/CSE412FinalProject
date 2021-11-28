@@ -1,3 +1,3 @@
-These files in both the QTDesignFiles directory and the WindowsFiles directory were generated using QTDesigner, a ui
-drag and drop program to help us make the initial ui. These files are no longer used, and all UI setup is now in the
-'main.py' file.
+The UI/WindowsFiles are the files that are actually used throughout the program, both the QTDesignFiles and
+GeneratedWindowsFiles directories were used with a program called QTDesigner in order to generate the UI, and further
+modifications were made and finalized in the WindowsFiles directory.
