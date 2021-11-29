@@ -27,12 +27,12 @@ Now that you've installed the app, here's an overview of how to use FilmFriend.
 
 We'll break this down into a few sections.
 
-1. \t[Browsing](#browsing)
-2. \t[Searching](#searching)
+1. [Browsing](#browsing)
+2. [Searching](#searching)
 3. [Favoriting](#favoriting)
 
-## Browsing
+##    Browsing
 
-## Searching
+##    Searching
 
-## Favoriting
+##    Favoriting
