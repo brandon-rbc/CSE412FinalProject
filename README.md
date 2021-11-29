@@ -8,10 +8,10 @@ _FilmFriend_ is an application designed to let users track and favorite differen
 # Setup/Installation
 To set up FilmFriend, you must first install the required packages and necessary components. 
 This includes **Python 3.8**, **PostgreSQL**, and **pyCharm**, as well as the core FilmFriend files. 
-1. [Set up Dependencies](##dependencies)
-2. [Set up the Files](##files)
+1. [Set up Dependencies](#dependencies)
+2. [Set up the Files](#files)
 
-3. [Favoriting](##favoriting)
+3. [Favoriting](#favoriting)
 ## Dependencies
 
 ### To Install Python: 
