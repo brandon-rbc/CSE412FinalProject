@@ -11,6 +11,7 @@ This includes **Python 3.8**, **PostgreSQL**, and **pyCharm**, as well as the co
 1. [Set up Dependencies](https://github.com/brandon-rbc/CSE412FinalProject/blob/master/README.md##Dependencies)
 2. [Set up the Files](https://github.com/brandon-rbc/CSE412FinalProject/blob/master/README.md##Files)
 
+3. [Favoriting](https://github.com/brandon-rbc/CSE412FinalProject/blob/master/README.md##Favoriting)
 ## Dependencies
 
 ### To Install Python: 
@@ -28,7 +29,7 @@ We'll break this down into a few sections.
 
 1. [Browsing](https://github.com/brandon-rbc/CSE412FinalProject/blob/master/README.md##Browsing)
 2. [Searching](https://github.com/brandon-rbc/CSE412FinalProject/blob/master/README.md##Searching)
-3. [Favoriting](https://github.com/brandon-rbc/CSE412FinalProject/blob/master/README.md##Favoriting)
+
 
 ## Browsing
 
