@@ -26,9 +26,9 @@ Now that you've installed the app, here's an overview of how to use FilmFriend.
 
 We'll break this down into a few sections.
 
-1.[Browsing](https://github.com/brandon-rbc/CSE412FinalProject/blob/master/README.md##Browsing)
-2.[Searching](https://github.com/brandon-rbc/CSE412FinalProject/blob/master/README.md##Searching)
-3.[Favoriting](https://github.com/brandon-rbc/CSE412FinalProject/blob/master/README.md##Favoriting)
+1. [Browsing](https://github.com/brandon-rbc/CSE412FinalProject/blob/master/README.md##Browsing)
+2. [Searching](https://github.com/brandon-rbc/CSE412FinalProject/blob/master/README.md##Searching)
+3. [Favoriting](https://github.com/brandon-rbc/CSE412FinalProject/blob/master/README.md##Favoriting)
 
 ## Browsing
 
