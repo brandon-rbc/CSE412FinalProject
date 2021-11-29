@@ -3,15 +3,15 @@ _FilmFriend_ is an application designed to let users track and favorite differen
 
 
 1. [App Setup](#setupinstallation)
-2. [App Tutorial](https://github.com/brandon-rbc/CSE412FinalProject/blob/master/README.md#tutorialhow-to-use)
+2. [App Tutorial](tutorialhow-to-use)
 
 # Setup/Installation
 To set up FilmFriend, you must first install the required packages and necessary components. 
 This includes **Python 3.8**, **PostgreSQL**, and **pyCharm**, as well as the core FilmFriend files. 
-1. [Set up Dependencies](https://github.com/brandon-rbc/CSE412FinalProject/blob/master/README.md##Dependencies)
-2. [Set up the Files](##Files)
+1. [Set up Dependencies](##dependencies)
+2. [Set up the Files](##files)
 
-3. [Favoriting](https://github.com/brandon-rbc/CSE412FinalProject/blob/master/README.md##Favoriting)
+3. [Favoriting](##favoriting)
 ## Dependencies
 
 ### To Install Python: 
