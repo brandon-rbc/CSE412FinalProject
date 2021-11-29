@@ -31,8 +31,8 @@ We'll break this down into a few sections.
 2. [Searching](#searching)
 3. [Favoriting](#favoriting)
 
-##    Browsing
+## Browsing
 
-##    Searching
+## Searching
 
-##    Favoriting
+## Favoriting
