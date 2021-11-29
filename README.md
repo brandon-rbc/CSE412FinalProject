@@ -11,7 +11,7 @@ This includes **Python 3.8**, **PostgreSQL**, and **pyCharm**, as well as the co
 1. [Set up Dependencies](#dependencies)
 2. [Set up the Files](#files)
 
-3. [Favoriting](#favoriting)
+
 ## Dependencies
 
 ### To Install Python: 
@@ -27,9 +27,9 @@ Now that you've installed the app, here's an overview of how to use FilmFriend.
 
 We'll break this down into a few sections.
 
-1. [Browsing](https://github.com/brandon-rbc/CSE412FinalProject/blob/master/README.md##Browsing)
-2. [Searching](https://github.com/brandon-rbc/CSE412FinalProject/blob/master/README.md##Searching)
-
+1. [Browsing](#browsing)
+2. [Searching](#searching)
+3. [Favoriting](#favoriting)
 
 ## Browsing
 
