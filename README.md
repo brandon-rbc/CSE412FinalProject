@@ -3,7 +3,7 @@ _FilmFriend_ is an application designed to let users track and favorite differen
 
 
 1. [App Setup](#setupinstallation)
-2. [App Tutorial](tutorialhow-to-use)
+2. [App Tutorial](#tutorialhow-to-use)
 
 # Setup/Installation
 To set up FilmFriend, you must first install the required packages and necessary components. 
