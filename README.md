@@ -13,21 +13,43 @@ This includes **Python 3.8**, **PostgreSQL**, and **PyCharm6**, as well as the c
 
 
 ## Dependencies
+You must first install the following dependencies before running this software:
+ 1. Python(3.8)
+ 2. PostgreSQL(12.4+)
+ 3. PyQT5 (5.15.1)
+ 4. 
 
-### To Install Python: 
+After installing the dependencies, open up a window of Windows PowerShell. 
+In PowerShell, begin by typing
 ```
-Go to https://www.python.org/downloads/ and download the most recent version, 3.10.0
+> cd "(your install location)\PostgreSQL\14\bin"
 ```
-After installing python, you should install PostgreSQL. 
+If you installed it in the default location, the exact line to run would be
+```
+> cd "C:\Program Files\PostgreSQL\14\bin"
+```
+Then, set the environment variables PGHOST and PGPORT. 
+Still in PowerShell, type
+```
+> set PGHOST=/tmp
+```
+and
+```
+> set PGPORT=8888
+```
 
 ## Files
-Now, you should have Python 3.8, PostgreSQL, and PyCharm6 ready to go. 
-Open up PyCharm by typing
+Open PyCharm. 
+Click "Get from VCS" and install Git if it has not already been installed. 
+Then, copy and paste the link to our repository (https://github.com/brandon-rbc/CSE412FinalProject) where it says "URL:"
+Click Clone. You may be asked to log into GitHub. If so, click "Log in with GitHub," and then click the Authorize button when the new page is opened. 
+
+Now, go to the folder you cloned the repository to. If you left it default, it should be C:\Users\(your username)\PycharmProjects\CSE412FinalProject 
+In this folder, create a new folder called "database". 
+Once you do this, go back to PowerShell and run the following command: 
 ```
-$ ./pycharm.sh
+> .\initdb C:\Users\(your username)\PycharmProjects\CSE412FinalProject\database
 ```
-in a terminal window within the directory "~/pycharm-community-2021.2.3/bin". 
-From there, create a new project. 
 
 # Tutorial/How to Use
 Now that you've installed the app, here's an overview of how to use FilmFriend. 
