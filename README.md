@@ -35,7 +35,7 @@ Still in PowerShell, type
 ```
 and
 ```
-> set PGPORT=8888
+> set PGPORT=5432
 ```
 
 ## Files
@@ -49,6 +49,10 @@ In this folder, create a new folder called "database".
 Once you do this, go back to PowerShell and run the following command: 
 ```
 > .\initdb C:\Users\(your username)\PycharmProjects\CSE412FinalProject\database
+```
+After initializing the database (you just did this), run the following command to start the database: 
+```
+> pg_ctl -D C:\Users\(your username)\PycharmProjects\CSE412FinalProject\database -o '-k /tmp' start
 ```
 
 # Tutorial/How to Use
