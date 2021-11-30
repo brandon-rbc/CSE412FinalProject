@@ -52,7 +52,7 @@ Once you do this, go back to PowerShell and run the following command:
 ```
 After initializing the database (you just did this), run the following command to start the database: 
 ```
-> pg_ctl -D C:\Users\(your username)\PycharmProjects\CSE412FinalProject\database -o '-k /tmp' start
+> .\pg_ctl -D C:\Users\(your username)\PycharmProjects\CSE412FinalProject\database -o '-k /tmp' start
 ```
 
 # Tutorial/How to Use
