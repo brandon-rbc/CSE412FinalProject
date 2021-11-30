@@ -5,7 +5,7 @@ _FilmFriend_ is an application designed to let users track and favorite differen
 1. [App Setup](#setupinstallation)
 2. [App Tutorial](#tutorialhow-to-use)
 
-# Setup/Installation
+# Setup/Installation - Windows
 To set up FilmFriend, you must first install the required packages and necessary components. 
 This includes **Python 3.8**, **PostgreSQL**, and **PyCharm6**, as well as the core FilmFriend files. 
 1. [Set up Dependencies](#dependencies)
@@ -16,7 +16,7 @@ This includes **Python 3.8**, **PostgreSQL**, and **PyCharm6**, as well as the c
 
 ### To Install Python: 
 ```
-$ sudo apt install python3.8
+Go to https://www.python.org/downloads/ and download the most recent version, 3.10.0
 ```
 After installing python, you should install PostgreSQL. 
 
