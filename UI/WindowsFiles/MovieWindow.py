@@ -9,6 +9,7 @@ class MovieWindow(QMainWindow):
         super().__init__()
         self.mediaID = -1
         self.setFixedSize(416, 490)
+        self.setObjectName(u"movieWindow")
         self.MovieImageLabel = QLabel(self)
         self.MovieImageLabel.setObjectName(u"MovieImageLabel")
         self.MovieImageLabel.setGeometry(QRect(135, 10, 180, 221))

@@ -4,24 +4,58 @@ import backend.psql_handlers as psql
 import image_download
 from UI.WindowsFiles.UserHomePage import UserHomePage
 qss = """
-QMenuBar {
-    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-                                      stop:0 lightgray, stop:1 darkgray);
-}
 
 QPushButton {
     background-color: dimgray; 
     border-radius: 5px; 
     color: white; 
-    font-family: 'Kumbh Sans', sans-serif; 
-    font-weight: bold
+    font-family: 'Gotham Medium', sans-serif; 
+    font-weight: bold;
 }
+
+QScrollArea {
+    background-color: black;
+}
+
+QMenuBar {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 lightgray, stop:1 darkgray);
+}
+
+QMainWindow {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                                      stop:0 #9198e5, stop:1 #282629);
+}
+
+#showWindow {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                                      stop:0 #e66465, stop:1 #282629);
+}
+
+#movieWindow {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                                      stop:0 #34DB61, stop:1 #282629);
+}
+
+
+
+
+QToolBar {
+    background-color: dimgray;
+}
+
+
 
 QPushButton:hover {
     background-color: #9518fc;
 }
 
-QScrollArea {
+QLabel {
+    color: white;
+    font-family: 'Gotham Medium', sans-serif;
+}
+
+#searchCentralWidget {
     background-color: black;
 }
 """

@@ -8,6 +8,7 @@ class ShowWindow(QMainWindow):
         super().__init__()
         self.mediaID = -1
         self.setFixedSize(416, 490)
+        self.setObjectName(u"showWindow")
         self.ShowImageLabel = QLabel(self)
         self.ShowImageLabel.setObjectName(u"ShowImageLabel")
         self.ShowImageLabel.setGeometry(QRect(135, 10, 180, 221))

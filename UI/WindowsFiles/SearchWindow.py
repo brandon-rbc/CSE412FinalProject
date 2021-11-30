@@ -9,18 +9,24 @@ class SearchWindow(QMainWindow):
         super().__init__()
         self.setFixedSize(803, 587)
         self.centralwidget = QWidget(self)
-        self.centralwidget.setObjectName(u"centralwidget")
+        #self.centralwidget.setStyleSheet("background-color: black;")
         self.gridLayoutWidget = QWidget(self.centralwidget)
         self.gridLayoutWidget.setObjectName(u"gridLayoutWidget")
         self.gridLayoutWidget.setGeometry(QRect(20, 70, 761, 451))
+        self.gridLayoutWidget.setStyleSheet("background-color: black;")
         self.gridLayout = QGridLayout(self.gridLayoutWidget)
-        self.gridLayout.setObjectName(u"gridLayout")
+        #self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
 
         self.scrollArea = QScrollArea(self.centralwidget)
+        self.scrollArea.setStyleSheet("background-color: black;")
         self.scrollArea.setGeometry(QRect(20, 70, 761, 451))
         self.scrollArea.setWidgetResizable(True)
-        self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
+        self.scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
+        
+        
+
 
         self.horizontalLayoutWidget = QWidget(self.centralwidget)
         self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
