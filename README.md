@@ -52,8 +52,34 @@ Once you do this, go back to PowerShell and run the following command:
 ```
 After initializing the database (you just did this), run the following command to start the database: 
 ```
-> .\pg_ctl -D C:\Users\(your username)\PycharmProjects\CSE412FinalProject\database -o '-k /tmp' start
+> .\pg_ctl -D C:\Users\(your username)\PycharmProjects\CSE412FinalProject\database start
 ```
+
+###If this is not working, try the following
+
+Go to C:\Program Files\PostgreSQL\14\data (default)
+Open "pg_hba.conf" in Notepad or Notepad++. 
+Scroll down, and change every instance of "scram-sha-256" to trust. 
+
+Also, type "services" in the searchbar on Windows, and open Services. 
+Scroll down to postgresql-x64-14 (our default, may be named differently based on the version you download), and make sure it's not running. If it is, right click and click "stop". 
+
+If you're still having issues, you can try doing 
+```
+set PGHOST=localhost
+```
+
+Now, go into PowerShell again and try running this command once more: 
+```
+> .\pg_ctl -D C:\Users\(your username)\PycharmProjects\CSE412FinalProject\database start
+```
+
+Now that the database is started, create a user by typing
+```
+> .\createdb $USER
+```
+
+This creates a user for the database. 
 
 # Tutorial/How to Use
 Now that you've installed the app, here's an overview of how to use FilmFriend. 
