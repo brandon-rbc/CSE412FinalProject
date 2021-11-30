@@ -7,7 +7,7 @@ from PySide6.QtWidgets import (QComboBox, QGridLayout, QHBoxLayout,
 class SearchWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.resize(803, 587)
+        self.setFixedSize(803, 587)
         self.centralwidget = QWidget(self)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayoutWidget = QWidget(self.centralwidget)

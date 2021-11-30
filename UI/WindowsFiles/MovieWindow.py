@@ -1,14 +1,14 @@
 from PySide6.QtWidgets import QVBoxLayout
 from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect)
 
-from PySide6.QtWidgets import (QLabel, QMainWindow, QPushButton,QWidget)
+from PySide6.QtWidgets import (QLabel, QMainWindow, QPushButton,QWidget, QScrollArea)
 
 
 class MovieWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.mediaID = -1
-        self.resize(416, 490)
+        self.setFixedSize(416, 490)
         self.MovieImageLabel = QLabel(self)
         self.MovieImageLabel.setObjectName(u"MovieImageLabel")
         self.MovieImageLabel.setGeometry(QRect(135, 10, 180, 221))
@@ -46,9 +46,15 @@ class MovieWindow(QMainWindow):
         self.label = QLabel(self)
         self.label.setObjectName(u"label")
         self.label.setGeometry(QRect(210, 250, 49, 16))
+
+        
+
         self.MovieSynopsisLabel = QLabel(self)
         self.MovieSynopsisLabel.setObjectName(u"MovieSynopsisLabel")
         self.MovieSynopsisLabel.setGeometry(QRect(200, 270, 151, 151))
+        self.MovieSynopsisLabel.setWordWrap(True)
+
+        
         self.MovieFavoriteButton = QPushButton(self)
         self.MovieFavoriteButton.setObjectName(u"FavoriteButton")
         self.MovieFavoriteButton.setGeometry(QRect(150, 440, 111, 31))
