@@ -51,9 +51,6 @@ QMainWindow {
 
 
 
-QToolBar {
-    background-color: dimgray;
-}
 
 
 
