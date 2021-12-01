@@ -99,6 +99,7 @@ class UserHomePage(QMainWindow):
         self.gridLayout.setDefaultPositioning(2, Qt.Orientation.Horizontal)
 
         self.scrollArea = QScrollArea(self.centralwidget)
+        self.scrollArea.setStyleSheet("background-color: black;")
         self.scrollArea.setObjectName(u"scrollArea")
         self.scrollArea.setGeometry(QRect(20, 80, 401, 451))
         self.scrollArea.setWidgetResizable(True)

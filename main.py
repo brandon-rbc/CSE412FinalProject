@@ -48,6 +48,7 @@ QToolBar {
 
 QPushButton:hover {
     background-color: #9518fc;
+    color: yellow;
 }
 
 QLabel {

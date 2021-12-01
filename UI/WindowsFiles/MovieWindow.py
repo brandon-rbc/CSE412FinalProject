@@ -12,7 +12,7 @@ class MovieWindow(QMainWindow):
         self.setObjectName(u"movieWindow")
         self.MovieImageLabel = QLabel(self)
         self.MovieImageLabel.setObjectName(u"MovieImageLabel")
-        self.MovieImageLabel.setGeometry(QRect(135, 10, 180, 221))
+        self.MovieImageLabel.setGeometry(QRect((416/2)-(180/2), 10, 180, 221))
         self.verticalLayoutWidget = QWidget(self)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
         self.verticalLayoutWidget.setGeometry(QRect(20, 270, 161, 151))
@@ -58,7 +58,7 @@ class MovieWindow(QMainWindow):
         
         self.MovieFavoriteButton = QPushButton(self)
         self.MovieFavoriteButton.setObjectName(u"FavoriteButton")
-        self.MovieFavoriteButton.setGeometry(QRect(150, 440, 111, 31))
+        self.MovieFavoriteButton.setGeometry(QRect((416/2)-(200/2), 440, 200, 31))
 
         self.retranslateUi(self)
 
