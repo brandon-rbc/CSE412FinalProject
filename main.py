@@ -3,13 +3,14 @@ from PySide6.QtWidgets import (QApplication)
 import backend.psql_handlers as psql
 import image_download
 from UI.WindowsFiles.UserHomePage import UserHomePage
+# CSS code for display functionality
 qss = """
 
 QPushButton {
     background-color: dimgray; 
     border-radius: 5px; 
     color: white; 
-    font-family: 'Gotham Medium', sans-serif; 
+    font-family: 'Trebuchet MS, sans-serif; 
     font-weight: bold;
 }
 
