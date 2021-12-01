@@ -37,6 +37,17 @@ QMainWindow {
                                       stop:0 #34DB61, stop:1 #282629);
 }
 
+#searchWindow {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                                      stop:0 #b7c421, stop:1 #282629);
+}
+
+#loginWindow {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                                      stop:0 #e07919, stop:1 #282629);
+}
+
+
 
 
 

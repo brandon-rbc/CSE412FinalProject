@@ -3,19 +3,20 @@ from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect)
 
 from PySide6.QtWidgets import (QLabel, QMainWindow, QPushButton,QWidget, QScrollArea)
 
-
+windowWidth = 450
+windowHeight = 490
 class MovieWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.mediaID = -1
-        self.setFixedSize(416, 490)
+        self.setFixedSize(windowWidth, windowHeight)
         self.setObjectName(u"movieWindow")
         self.MovieImageLabel = QLabel(self)
         self.MovieImageLabel.setObjectName(u"MovieImageLabel")
-        self.MovieImageLabel.setGeometry(QRect((416/2)-(180/2), 10, 180, 221))
+        self.MovieImageLabel.setGeometry(QRect((windowWidth/2)-(180/2), 10, 180, 221))
         self.verticalLayoutWidget = QWidget(self)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(20, 270, 161, 151))
+        self.verticalLayoutWidget.setGeometry(QRect((windowWidth/4) - 80, 270, 160, 151))
         self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -46,19 +47,20 @@ class MovieWindow(QMainWindow):
 
         self.label = QLabel(self)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(210, 250, 49, 16))
+        self.label.setGeometry(QRect(((3/4) * windowWidth) - 25, 250, 50, 16))
+       
 
         
 
         self.MovieSynopsisLabel = QLabel(self)
         self.MovieSynopsisLabel.setObjectName(u"MovieSynopsisLabel")
-        self.MovieSynopsisLabel.setGeometry(QRect(200, 270, 151, 151))
+        self.MovieSynopsisLabel.setGeometry(QRect(((3/4) * windowWidth) - 75, 260, 150, 150))
         self.MovieSynopsisLabel.setWordWrap(True)
 
         
         self.MovieFavoriteButton = QPushButton(self)
         self.MovieFavoriteButton.setObjectName(u"FavoriteButton")
-        self.MovieFavoriteButton.setGeometry(QRect((416/2)-(200/2), 440, 200, 31))
+        self.MovieFavoriteButton.setGeometry(QRect((windowWidth/2)-(200/2), 440, 200, 31))
 
         self.retranslateUi(self)
 

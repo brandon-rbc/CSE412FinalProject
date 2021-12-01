@@ -8,6 +8,7 @@ class SearchWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setFixedSize(803, 587)
+        self.setObjectName("searchWindow")
         self.centralwidget = QWidget(self)
         #self.centralwidget.setStyleSheet("background-color: black;")
         self.gridLayoutWidget = QWidget(self.centralwidget)

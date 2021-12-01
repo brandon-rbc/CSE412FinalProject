@@ -5,7 +5,8 @@ from PySide6.QtWidgets import (QLabel, QMainWindow, QPushButton)
 class LoginWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.resize(261, 138)
+        self.setFixedSize(261, 138)
+        self.setObjectName("loginWindow")
         self.label = QLabel(self)
         self.label.setObjectName(u"label")
         self.label.setGeometry(QRect(100, 10, 49, 16))

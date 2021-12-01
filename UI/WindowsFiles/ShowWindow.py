@@ -3,21 +3,24 @@ from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect)
 
 from PySide6.QtWidgets import (QLabel, QMainWindow, QPushButton, QWidget)
 
+windowWidth = 450
+windowHeight = 490
+
 class ShowWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.mediaID = -1
-        self.setFixedSize(416, 490)
+        self.setFixedSize(windowWidth, windowHeight)
         self.setObjectName(u"showWindow")
         self.ShowImageLabel = QLabel(self)
         self.ShowImageLabel.setObjectName(u"ShowImageLabel")
-        self.ShowImageLabel.setGeometry(QRect((416/2)-(180/2), 10, 180, 221))
+        self.ShowImageLabel.setGeometry(QRect((windowWidth/2)-(180/2), 10, 180, 221))
         self.ShowFavoriteButton = QPushButton(self)
         self.ShowFavoriteButton.setObjectName(u"FavoriteButton")
-        self.ShowFavoriteButton.setGeometry(QRect((416/2)-(200/2), 440, 200, 31))
+        self.ShowFavoriteButton.setGeometry(QRect((windowWidth/2)-(200/2), 440, 200, 31))
         self.verticalLayoutWidget = QWidget(self)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(30, 270, 161, 131))
+        self.verticalLayoutWidget.setGeometry(QRect(10, 270, 230, 131))
         self.verticalLayout_2 = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -53,10 +56,12 @@ class ShowWindow(QMainWindow):
 
         self.label = QLabel(self)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(250, 240, 49, 16))
+        self.label.setGeometry(QRect(((3/4) * windowWidth) - 25, 250, 50, 16))
         self.ShowSynopsisLabel = QLabel(self)
         self.ShowSynopsisLabel.setObjectName(u"ShowSynopsisLabel")
-        self.ShowSynopsisLabel.setGeometry(QRect(240, 260, 151, 151))
+        self.ShowSynopsisLabel.setGeometry(QRect(((3/4) * windowWidth) - 75, 260, 150, 150))
+        self.ShowSynopsisLabel.setWordWrap(True)
+        #self.ShowSynopsisLabel.setStyleSheet("text-align: justify;")
 
         self.retranslateUi(self)
 
