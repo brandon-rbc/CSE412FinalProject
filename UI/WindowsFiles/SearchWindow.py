@@ -91,7 +91,7 @@ class SearchWindow(QMainWindow):
         QMetaObject.connectSlotsByName(self)
         # setupUi
 
-    def retranslateUi(self, SearchWindow):
+    def retranslateUi(self, SearchWindow):#qtdesigner generated code
         SearchWindow.setWindowTitle(QCoreApplication.translate("SearchWindow", u"Search Media", None))
         self.pushButton.setText(QCoreApplication.translate("SearchWindow", u"Search", None))
         self.label.setText(QCoreApplication.translate("SearchWindow", u"Search By:", None))

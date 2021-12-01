@@ -57,9 +57,11 @@ class ShowWindow(QMainWindow):
         self.label = QLabel(self)
         self.label.setObjectName(u"label")
         self.label.setGeometry(QRect(((3/4) * windowWidth) - 25, 250, 50, 16))
+        self.label.setStyleSheet("background: gray")
         self.ShowSynopsisLabel = QLabel(self)
         self.ShowSynopsisLabel.setObjectName(u"ShowSynopsisLabel")
         self.ShowSynopsisLabel.setGeometry(QRect(((3/4) * windowWidth) - 75, 260, 150, 150))
+        self.ShowSynopsisLabel.setStyleSheet("background: black")
         self.ShowSynopsisLabel.setWordWrap(True)
         #self.ShowSynopsisLabel.setStyleSheet("text-align: justify;")
 
@@ -68,7 +70,7 @@ class ShowWindow(QMainWindow):
         QMetaObject.connectSlotsByName(self)
     # setupUi
 
-    def retranslateUi(self, S):
+    def retranslateUi(self, S):#qtdesigner generated code
         S.setWindowTitle(QCoreApplication.translate("S", u"Show", None))
         self.ShowFavoriteButton.setText(QCoreApplication.translate("S", u"Add to Favorites", None))
         self.ShowTitleLabel.setText(QCoreApplication.translate("S", u"Title:", None))

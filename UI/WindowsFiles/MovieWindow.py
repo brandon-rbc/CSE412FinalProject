@@ -48,6 +48,7 @@ class MovieWindow(QMainWindow):
         self.label = QLabel(self)
         self.label.setObjectName(u"label")
         self.label.setGeometry(QRect(((3/4) * windowWidth) - 25, 250, 50, 16))
+        self.label.setStyleSheet("background: gray")
        
 
         
@@ -55,6 +56,7 @@ class MovieWindow(QMainWindow):
         self.MovieSynopsisLabel = QLabel(self)
         self.MovieSynopsisLabel.setObjectName(u"MovieSynopsisLabel")
         self.MovieSynopsisLabel.setGeometry(QRect(((3/4) * windowWidth) - 75, 260, 150, 150))
+        self.MovieSynopsisLabel.setStyleSheet("background: black")
         self.MovieSynopsisLabel.setWordWrap(True)
 
         
@@ -67,7 +69,7 @@ class MovieWindow(QMainWindow):
         QMetaObject.connectSlotsByName(self)
         # setupUi
 
-    def retranslateUi(self, MovieWindow):
+    def retranslateUi(self, MovieWindow):#qtdesigner generated code
         MovieWindow.setWindowTitle(QCoreApplication.translate("MovieWindow", u"Movie", None))
         self.MovieTitleLabel.setText(QCoreApplication.translate("MovieWindow", u"Title:", None))
         self.MovieYearLabel.setText(QCoreApplication.translate("MovieWindow", u"Year of Release:", None))
