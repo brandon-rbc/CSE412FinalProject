@@ -6,21 +6,21 @@ import psycopg2
 
 # Connection to psql database and all query handling
 
-connection = psycopg2.connect(user="bccampos",
+connection = psycopg2.connect(user="acgfo",
                               password="",
                               host="127.0.0.1",
-                              port="8888",
-                              database="bccampos")
+                              port="5432",
+                              database="acgfo")
 
 cursor = connection.cursor()
 
 def main():
     try:
-        connection = psycopg2.connect(user="bccampos",
+        connection = psycopg2.connect(user="acgfo",
                                       password="",
                                       host="127.0.0.1",
-                                      port="8888",
-                                      database="bccampos")
+                                      port="5432",
+                                      database="acgfo")
 
         cursor = connection.cursor()
     except(Exception, psycopg2.Error) as error:
@@ -49,9 +49,10 @@ def getNumFavs(id):
 
 def getSearchMedia(sort_method, search_method, search_query):
     media_list = []
+    search_query = search_query.upper()
     if search_method == 'Title':
         cursor.execute(f"SELECT \"mediaObject\".name, \"mediaObject\".poster_url, \"mediaObject\".mediaID, \"mediaObject\".rating FROM \"mediaObject\", \"show\" "
-                       f"WHERE \"mediaObject\".name LIKE '%{search_query}%' "
+                       f"WHERE upper(\"mediaObject\".name) LIKE '%{search_query}%' "
                        f"AND \"mediaObject\".mediaID = \"show\".mediaID; ")
         result = cursor.fetchone()
         while result:
@@ -59,7 +60,7 @@ def getSearchMedia(sort_method, search_method, search_query):
             media_list.append(temp)
             result = cursor.fetchone()
         cursor.execute(f"SELECT \"mediaObject\".name, \"mediaObject\".poster_url, \"mediaObject\".mediaID, \"mediaObject\".rating FROM \"mediaObject\", \"movie\" "
-            f"WHERE \"mediaObject\".name LIKE '%{search_query}%' "
+            f"WHERE upper(\"mediaObject\".name) LIKE '%{search_query}%' "
             f"AND \"mediaObject\".mediaID = \"movie\".mediaID; ")
         result = cursor.fetchone()
         while result:
@@ -68,7 +69,7 @@ def getSearchMedia(sort_method, search_method, search_query):
             result = cursor.fetchone()
     elif search_method == 'Director':
         cursor.execute(f"SELECT \"director\".directorID FROM \"director\""
-                       f"WHERE \"director\".name LIKE '%{search_query}%';")
+                       f"WHERE upper(\"director\".name) LIKE '%{search_query}%';")
         result = cursor.fetchone()
         ids = []
         while result:

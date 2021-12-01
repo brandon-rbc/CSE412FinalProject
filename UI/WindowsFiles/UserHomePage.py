@@ -1,25 +1,32 @@
-from PySide6.QtWidgets import QScrollArea
+from PySide6.QtWidgets import QMenu, QScrollArea
 from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect, Qt)
-from PySide6.QtGui import (QPixmap)
+from PySide6.QtGui import (QPixmap, QFont, QPainter, QBrush, QPen, QLinearGradient, QPalette, QColor, QAction, QIcon)
 from PySide6.QtWidgets import (QComboBox, QGridLayout, QHBoxLayout,
-    QLabel, QMainWindow, QMenuBar, QPushButton, QStatusBar, QWidget)
+    QLabel, QMainWindow, QMenuBar, QPushButton, QStatusBar, QWidget, QToolBar)
 
 import backend.psql_handlers as psql
 from UI.WindowsFiles.SearchWindow import SearchWindow
 from UI.WindowsFiles.LoginWindow import LoginWindow
 from UI.WindowsFiles.MovieWindow import MovieWindow
 from UI.WindowsFiles.ShowWindow import ShowWindow
+#from UI.WindowsFiles.ProfileWindow import ProfileWindow
 
 
 class UserHomePage(QMainWindow):
     def __init__(self):
         super().__init__()
+        self.setObjectName(u"userHomePage")
+        self.setFixedSize(800, 600)
         self.currentUser = -1
         self.buttonList = []
         self.loginWindow = LoginWindow()
         self.searchWindow = SearchWindow()
         self.showWindow = ShowWindow()
         self.movieWindow = MovieWindow()
+        self._createMenuBar()
+        #self._createActions()
+        #self._createToolBar()
+        self.statusBar().showMessage('Message in statusbar.')
         self.loginWindow.loginButton.clicked.connect(self.updateUser)
         self.showWindow.ShowFavoriteButton.clicked.connect(self.updateShowFavorite)
         self.movieWindow.MovieFavoriteButton.clicked.connect(self.updateMovieFavorite)
@@ -28,49 +35,61 @@ class UserHomePage(QMainWindow):
         self.currentUserFavorites = []
 
         self.setEnabled(True)
-        self.resize(800, 600)
+        
+        #self.setStyleSheet(u"QMainWindow {\n"
+        #                         "background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);"
+        #                         "}")
+
+        
+    
         self.centralwidget = QWidget(self)
         self.centralwidget.setObjectName(u"centralwidget")
+        
+
         self.MediaSearchButton = QPushButton(self.centralwidget, clicked=lambda: self.openSearchWindow())
         # self.MediaSearchButton = QPushButton(self.centralwidget, clicked=lambda: self.openSearchWindow())
         self.MediaSearchButton.setObjectName(u"MediaSearchButton")
         self.MediaSearchButton.setGeometry(QRect(320, 20, 101, 31))
-        self.label = QLabel(self.centralwidget)
-        self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(560, 120, 181, 181))
+        #self.MediaSearchButton.setStyleSheet("background-color: dimgray; border-radius: 5px; color: white; font-family: 'Kumbh Sans', sans-serif; font-weight: bold")
+       
+        
+        
+
+        #image label-contains user profile picture
+        self.label = newLabel(self.centralwidget, u"label", (560, 120, 181, 181))
         self.label.setStyleSheet(u"QLabel {\n"
-                                 "	background-image: url(Assets/ProfileImage.png)\n"
+                                 "	background-image: url(Assets/ProfileImage.png);\n"
+                                 "  width: 181px;"
+                                 "  height: 181px"
                                  "}")
-        self.label.setPixmap(QPixmap(u"../../Assets/ProfileImage.jpg"))
+        #self.label.setPixmap(QPixmap(u"../../Assets/ProfileImage.jpg"))
         self.label.setScaledContents(True)
-        self.UserNameLabel = QLabel(self.centralwidget)
-        self.UserNameLabel.setObjectName(u"UserNameLabel")
-        self.UserNameLabel.setGeometry(QRect(600, 300, 91, 20))
+
+        #label contains username
+        self.UserNameLabel = newLabel(self.centralwidget, u"UserNameLabel", (600, 300, 91, 20))
+
+        #button to change user
         self.ChangeUserButton = QPushButton(self.centralwidget, clicked=lambda: self.openLoginWindow())
         # self.ChangeUserButton = QPushButton(self.centralwidget)
         self.ChangeUserButton.setObjectName(u"ChangeUserButton")
         self.ChangeUserButton.setGeometry(QRect(610, 320, 75, 24))
-        self.label_2 = QLabel(self.centralwidget)
-        self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(600, 360, 31, 16))
-        self.AgeLabel = QLabel(self.centralwidget)
-        self.AgeLabel.setObjectName(u"AgeLabel")
-        self.AgeLabel.setGeometry(QRect(630, 360, 49, 16))
-        self.label_4 = QLabel(self.centralwidget)
-        self.label_4.setObjectName(u"label_4")
-        self.label_4.setGeometry(QRect(20, 60, 51, 16))
-        self.label_5 = QLabel(self.centralwidget)
-        self.label_5.setObjectName(u"label_5")
-        self.label_5.setGeometry(QRect(580, 380, 51, 16))
-        self.GenderLabel = QLabel(self.centralwidget)
-        self.GenderLabel.setObjectName(u"GenderLabel")
-        self.GenderLabel.setGeometry(QRect(630, 380, 71, 16))
-        self.label_3 = QLabel(self.centralwidget)
-        self.label_3.setObjectName(u"label_3")
-        self.label_3.setGeometry(QRect(550, 400, 81, 16))
-        self.NumFavsLabel = QLabel(self.centralwidget)
-        self.NumFavsLabel.setObjectName(u"NumFavsLabel")
-        self.NumFavsLabel.setGeometry(QRect(630, 400, 51, 16))
+
+        self.label_2 = newLabel(self.centralwidget, u"label_2", (600, 360, 31, 16))
+
+        self.AgeLabel = newLabel(self.centralwidget, u"AgeLabel", (630, 360, 49, 16))
+
+        self.label_4 = newLabel(self.centralwidget, u"label_4", (20, 60, 51, 16))
+        
+        self.label_5 = newLabel(self.centralwidget, u"label_5", (580, 380, 51, 16))
+
+        self.GenderLabel = newLabel(self.centralwidget, u"GenderLabel", (630, 380, 71, 16))
+
+        self.label_3 = newLabel(self.centralwidget, u"label_3", (550, 400, 81, 16))
+        
+        self.NumFavsLabel = newLabel(self.centralwidget, u"NumFavsLabel", (630, 400, 51, 16))
+
+    
+
         self.gridLayoutWidget = QWidget(self.centralwidget)
         self.gridLayoutWidget.setObjectName(u"gridLayoutWidget")
         self.gridLayoutWidget.setGeometry(QRect(20, 80, 491, 451))
@@ -80,6 +99,8 @@ class UserHomePage(QMainWindow):
         self.gridLayout.setDefaultPositioning(2, Qt.Orientation.Horizontal)
 
         self.scrollArea = QScrollArea(self.centralwidget)
+        self.scrollArea.setStyleSheet("background-color: black;")
+        self.scrollArea.setObjectName(u"scrollArea")
         self.scrollArea.setGeometry(QRect(20, 80, 401, 451))
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
@@ -106,10 +127,11 @@ class UserHomePage(QMainWindow):
         self.horizontalLayout.addWidget(self.SortByBox)
 
         self.setCentralWidget(self.centralwidget)
-        self.menubar = QMenuBar(self)
-        self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 800, 22))
-        self.setMenuBar(self.menubar)
+
+        #self.menubar = QMenuBar(self)
+        #self.menubar.setObjectName(u"menubar")
+        #self.menubar.setGeometry(QRect(0, 0, 800, 22))
+        #self.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(self)
         self.statusbar.setObjectName(u"statusbar")
         self.setStatusBar(self.statusbar)
@@ -118,6 +140,21 @@ class UserHomePage(QMainWindow):
         self.updateUser()
 
         QMetaObject.connectSlotsByName(self)
+
+    def _createMenuBar(self):
+        menuBar = QMenuBar(self)
+        self.setMenuBar(menuBar)
+        movieMenu = QMenu("&Movies", self)
+        menuBar.addMenu(movieMenu)
+
+    def _createToolBar(self):
+        testToolBar = QToolBar("Edit", self)
+        self.addToolBar(Qt.BottomToolBarArea, testToolBar)
+        testToolBar.addAction(self.profileAction)
+
+    def _createActions(self):
+         self.profileAction = QAction(QIcon("Assets/ProfileImage.png"), "&Open...", self)
+        
 
     def retranslateUi(self, UserHomePage):
         UserHomePage.setWindowTitle(QCoreApplication.translate("UserHomePage", u"User Page", None))
@@ -306,3 +343,15 @@ class UserHomePage(QMainWindow):
         widget = QWidget()
         widget.setLayout(self.searchWindow.gridLayout)
         self.searchWindow.scrollArea.setWidget(widget)
+
+    
+
+def newLabel(widget, name, geometry):
+        print(type(geometry))
+        label = QLabel(widget)
+        label.setObjectName(name)
+        label.setGeometry(QRect(geometry[0], geometry[1], geometry[2], geometry[3] ))
+        label.setStyleSheet(u"QLabel {\n"
+                                 "	color: white\n"
+                                "}")
+        return label
