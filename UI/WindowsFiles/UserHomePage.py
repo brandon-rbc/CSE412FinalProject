@@ -89,7 +89,7 @@ class UserHomePage(QMainWindow):
         self.ChangeUserButton = QPushButton(self.centralwidget, clicked=lambda: self.openLoginWindow())
         # self.ChangeUserButton = QPushButton(self.centralwidget)
         self.ChangeUserButton.setObjectName(u"ChangeUserButton")
-        self.ChangeUserButton.setGeometry(QRect(610, 320, 75, 24))
+        self.ChangeUserButton.setGeometry(QRect((3 / 4) * windowWidth-39, 320, 75, 24)) #centering button
 
         self.label_2 = newLabel(self.centralwidget, u"label_2", (600, 360, 31, 16))
 
