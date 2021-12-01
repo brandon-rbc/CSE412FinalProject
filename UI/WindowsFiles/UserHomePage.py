@@ -2,7 +2,7 @@ from PySide6.QtWidgets import QMenu, QScrollArea
 from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect, Qt)
 from PySide6.QtGui import (QPixmap, QFont, QPainter, QBrush, QPen, QLinearGradient, QPalette, QColor, QAction, QIcon)
 from PySide6.QtWidgets import (QComboBox, QGridLayout, QHBoxLayout,
-    QLabel, QMainWindow, QMenuBar, QPushButton, QStatusBar, QWidget, QToolBar)
+    QLabel, QMainWindow, QMenuBar, QPushButton, QStatusBar, QWidget, QToolBar, QVBoxLayout)
 
 import backend.psql_handlers as psql
 from UI.WindowsFiles.SearchWindow import SearchWindow
@@ -11,12 +11,13 @@ from UI.WindowsFiles.MovieWindow import MovieWindow
 from UI.WindowsFiles.ShowWindow import ShowWindow
 #from UI.WindowsFiles.ProfileWindow import ProfileWindow
 
-
+windowWidth = 800
+windowHeight = 600
 class UserHomePage(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setObjectName(u"userHomePage")
-        self.setFixedSize(800, 600)
+        self.setFixedSize(windowWidth, windowHeight)
         self.currentUser = -1
         self.buttonList = []
         self.loginWindow = LoginWindow()
@@ -31,6 +32,21 @@ class UserHomePage(QMainWindow):
         self.showWindow.ShowFavoriteButton.clicked.connect(self.updateShowFavorite)
         self.movieWindow.MovieFavoriteButton.clicked.connect(self.updateMovieFavorite)
         self.searchWindow.pushButton.clicked.connect(self.updateSearchOptions)
+
+        """
+        self.verticalLayoutWidget = QWidget(self)
+        self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
+        self.verticalLayoutWidget.setGeometry(QRect(((3/4)*windowWidth) - 100, 150, 200, 300))
+        self.verticalLayoutWidget.setStyleSheet("background: gray;")
+        self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        """
+
+        self.UserBackground = QLabel(self)
+        self.UserBackground.setGeometry(((3/4)*windowWidth) - 100, 150, 200, 300)
+        self.UserBackground.setObjectName(u"UserBackground")
+        self.UserBackground.setStyleSheet("background: gray;")
 
         self.currentUserFavorites = []
 
@@ -56,17 +72,18 @@ class UserHomePage(QMainWindow):
         
 
         #image label-contains user profile picture
-        self.label = newLabel(self.centralwidget, u"label", (560, 120, 181, 181))
+        self.label = newLabel(self.centralwidget, u"label", (((3/4)*windowWidth) - 90, 120, 180, 180))
         self.label.setStyleSheet(u"QLabel {\n"
                                  "	background-image: url(Assets/ProfileImage.png);\n"
-                                 "  width: 181px;"
-                                 "  height: 181px"
+                                 "  width: 180px;"
+                                 "  height: 180px"
                                  "}")
         #self.label.setPixmap(QPixmap(u"../../Assets/ProfileImage.jpg"))
         self.label.setScaledContents(True)
 
         #label contains username
-        self.UserNameLabel = newLabel(self.centralwidget, u"UserNameLabel", (600, 300, 91, 20))
+        self.UserNameLabel = newLabel(self.centralwidget, u"UserNameLabel", (((3/4)*windowWidth) - 45, 300, 90, 20))
+        self.UserNameLabel.setStyleSheet("text-align: center;")
 
         #button to change user
         self.ChangeUserButton = QPushButton(self.centralwidget, clicked=lambda: self.openLoginWindow())
@@ -92,7 +109,7 @@ class UserHomePage(QMainWindow):
 
         self.gridLayoutWidget = QWidget(self.centralwidget)
         self.gridLayoutWidget.setObjectName(u"gridLayoutWidget")
-        self.gridLayoutWidget.setGeometry(QRect(20, 80, 491, 451))
+        self.gridLayoutWidget.setGeometry(QRect(0, 80, 400, 451))
         self.gridLayout = QGridLayout(self.gridLayoutWidget)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
@@ -101,7 +118,7 @@ class UserHomePage(QMainWindow):
         self.scrollArea = QScrollArea(self.centralwidget)
         self.scrollArea.setStyleSheet("background-color: black;")
         self.scrollArea.setObjectName(u"scrollArea")
-        self.scrollArea.setGeometry(QRect(20, 80, 401, 451))
+        self.scrollArea.setGeometry(QRect(0, 80, 400, 451))
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
 
