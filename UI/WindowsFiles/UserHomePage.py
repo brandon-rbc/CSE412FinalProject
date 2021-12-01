@@ -357,6 +357,7 @@ class UserHomePage(QMainWindow):
                 media_button = QPushButton(item[0])
                 media_button.clicked.connect(self.openMovieWindow)
             media_button.setText(item[0])
+            media_button.setStyleSheet("background: orange")
 
             self.searchWindow.gridLayout.addWidget(media_image)
             self.searchWindow.gridLayout.addWidget(media_button)
