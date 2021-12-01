@@ -302,15 +302,18 @@ class UserHomePage(QMainWindow):
             media_image.setPixmap(QPixmap(f'image_holder/{favorite[1]}'))
             media_image.setScaledContents(True)
             if favorite[3] == 'show':
-                media_button = QPushButton(favorite[2])
-                media_button.clicked.connect(self.openShowWindow)
+                self.media_button = QPushButton(favorite[2])
+
+                self.media_button.setGeometry(QRect(320, 20, 101, 31))
+                self.media_button.clicked.connect(self.openShowWindow)
             else:
-                media_button = QPushButton(favorite[2])
-                media_button.clicked.connect(self.openMovieWindow)
-            media_button.setText(favorite[2])
+                self.media_button = QPushButton(favorite[2])
+                self.media_button.clicked.connect(self.openMovieWindow)
+            self.media_button.setText(favorite[2])
+            self.media_button.setStyleSheet("background: orange")
 
             self.gridLayout.addWidget(media_image)
-            self.gridLayout.addWidget(media_button)
+            self.gridLayout.addWidget(self.media_button)
         numFavs = psql.getNumFavs(self.currentUser)
         self.NumFavsLabel.setText(str(numFavs))
         widget = QWidget()
