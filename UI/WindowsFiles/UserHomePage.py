@@ -83,7 +83,7 @@ class UserHomePage(QMainWindow):
 
         #label contains username
         self.UserNameLabel = newLabel(self.centralwidget, u"UserNameLabel", (((3/4)*windowWidth) - 45, 300, 90, 20))
-        self.UserNameLabel.setStyleSheet("text-align: center;")
+        self.UserNameLabel.setAlignment(Qt.AlignCenter)#align username center
 
         #button to change user
         self.ChangeUserButton = QPushButton(self.centralwidget, clicked=lambda: self.openLoginWindow())
