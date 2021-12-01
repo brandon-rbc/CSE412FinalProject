@@ -6,21 +6,21 @@ import psycopg2
 
 # Connection to psql database and all query handling
 
-connection = psycopg2.connect(user="acgfo",
+connection = psycopg2.connect(user="mcdangel",
                               password="",
                               host="127.0.0.1",
-                              port="5432",
-                              database="acgfo")
+                              port="8888",
+                              database="mcdangel")
 
 cursor = connection.cursor()
 
 def main():
     try:
-        connection = psycopg2.connect(user="acgfo",
+        connection = psycopg2.connect(user="mcdangel",
                                       password="",
                                       host="127.0.0.1",
-                                      port="5432",
-                                      database="acgfo")
+                                      port="8888",
+                                      database="mcdangel")
 
         cursor = connection.cursor()
     except(Exception, psycopg2.Error) as error:
