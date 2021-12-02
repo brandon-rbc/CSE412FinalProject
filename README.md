@@ -86,6 +86,24 @@ Now that you've installed the app, here's an overview of how to use FilmFriend.
 
 We'll break this down into a few sections.
 
+Pages:
+
+1. [User Page](#User-Page)
+2. [Media Search](#Media-Search)
+3. [Movie Info](#Movie-Info)
+4. [Show Info](#Show-Info)
+
+## User Page
+
+
+## Media Search
+
+
+## Movie Info
+
+## Show Info
+
+Actions:
 1. [Browsing](#browsing)
 2. [Searching](#searching)
 3. [Favoriting](#favoriting)
