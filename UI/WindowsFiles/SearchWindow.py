@@ -1,6 +1,6 @@
 from PySide6 import QtCore
 from PySide6.QtGui import QTextCursor
-from PySide6.QtWidgets import QTextEdit, QScrollArea
+from PySide6.QtWidgets import QLineEdit, QTextEdit, QScrollArea
 from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect, Qt)
 from PySide6.QtWidgets import (QComboBox, QGridLayout, QHBoxLayout,
     QLabel, QMainWindow, QMenuBar, QPushButton, QStatusBar, QWidget, QMenu)
@@ -27,7 +27,7 @@ class SearchWindow(QMainWindow):
         self.scrollArea.setStyleSheet("background-color: black;")
         self.scrollArea.setGeometry(QRect(20, 70, 761, 451))
         self.scrollArea.setWidgetResizable(True)
-        self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
+        #self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         self.scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         
         
@@ -45,7 +45,7 @@ class SearchWindow(QMainWindow):
 
         self.horizontalLayout_2.addWidget(self.pushButton)
 
-        self.textEdit = QTextEdit(self.horizontalLayoutWidget)
+        self.textEdit = QLineEdit(self.horizontalLayoutWidget)
         self.textEdit.setObjectName(u"textEdit")
         self.textEdit.installEventFilter(self)
 
@@ -80,6 +80,8 @@ class SearchWindow(QMainWindow):
         self.SortByBoxSearch.addItem("")
         self.SortByBoxSearch.addItem("")
         self.SortByBoxSearch.setObjectName(u"SortByBoxSearch")
+        #self.SortByBoxSearch.currentIndexChanged.connect(self.homepage.updateSearchOptions())
+        self.SortByBoxSearch.currentIndexChanged.connect(self.homepage.updateSearchOptions)
 
         self.horizontalLayout.addWidget(self.SortByBoxSearch)
 
@@ -114,5 +116,4 @@ class SearchWindow(QMainWindow):
             if event.key() == QtCore.Qt.Key_Return and self.textEdit.hasFocus():
                 self.homepage.updateSearchOptions()
                 self.textEdit.clear()
-                self.textEdit.moveCursor(QTextCursor.Start)
         return super().eventFilter(obj, event)

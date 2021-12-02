@@ -54,6 +54,11 @@ QMainWindow {
 
 }
 
+#UserNameLabel {
+    font-weight: bold; 
+    font-size: large; 
+    color: black;
+}
 
 QPushButton:hover {
     background-color: darkgray;
