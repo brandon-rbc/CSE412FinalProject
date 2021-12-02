@@ -21,7 +21,7 @@ class UserHomePage(QMainWindow):
         self.currentUser = -1
         self.buttonList = []
         self.loginWindow = LoginWindow()
-        self.searchWindow = SearchWindow()
+        self.searchWindow = SearchWindow(self)
         self.showWindow = ShowWindow()
         self.movieWindow = MovieWindow()
         self._createMenuBar()
@@ -46,7 +46,7 @@ class UserHomePage(QMainWindow):
         self.UserBackground = QLabel(self)
         self.UserBackground.setGeometry(((3/4)*windowWidth) - 100, 150, 200, 300)
         self.UserBackground.setObjectName(u"UserBackground")
-        self.UserBackground.setStyleSheet("background: gray;")
+        self.UserBackground.setStyleSheet("background: rgba(160, 160, 160, 0.50); border-radius: 3px;")
 
         self.currentUserFavorites = []
 
@@ -62,10 +62,7 @@ class UserHomePage(QMainWindow):
         self.centralwidget.setObjectName(u"centralwidget")
         
 
-        self.MediaSearchButton = QPushButton(self.centralwidget, clicked=lambda: self.openSearchWindow())
-        # self.MediaSearchButton = QPushButton(self.centralwidget, clicked=lambda: self.openSearchWindow())
-        self.MediaSearchButton.setObjectName(u"MediaSearchButton")
-        self.MediaSearchButton.setGeometry(QRect(320, 20, 101, 31))
+        
         #self.MediaSearchButton.setStyleSheet("background-color: dimgray; border-radius: 5px; color: white; font-family: 'Kumbh Sans', sans-serif; font-weight: bold")
        
         
@@ -84,26 +81,30 @@ class UserHomePage(QMainWindow):
         #label contains username
         self.UserNameLabel = newLabel(self.centralwidget, u"UserNameLabel", (((3/4)*windowWidth) - 45, 300, 90, 20))
         self.UserNameLabel.setAlignment(Qt.AlignCenter)#align username center
+        self.UserNameLabel.setStyleSheet("font-weight: bold; font-size: large; color: black;")
+        
 
         #button to change user
         self.ChangeUserButton = QPushButton(self.centralwidget, clicked=lambda: self.openLoginWindow())
         # self.ChangeUserButton = QPushButton(self.centralwidget)
         self.ChangeUserButton.setObjectName(u"ChangeUserButton")
-        self.ChangeUserButton.setGeometry(QRect((3 / 4) * windowWidth-39, 320, 75, 24)) #centering button
+        self.ChangeUserButton.setGeometry(QRect((3 / 4) * windowWidth-37, 390, 75, 24)) #centering button
+    
 
-        self.label_2 = newLabel(self.centralwidget, u"label_2", (600, 360, 31, 16))
+        self.label_2 = newLabel(self.centralwidget, u"label_2", (((3/4)*windowWidth) - 70, 320, 31, 16))
+        self.label_2.setAlignment(Qt.AlignLeft)
 
-        self.AgeLabel = newLabel(self.centralwidget, u"AgeLabel", (630, 360, 49, 16))
+        self.AgeLabel = newLabel(self.centralwidget, u"AgeLabel", (645, 320, 49, 16))
 
         self.label_4 = newLabel(self.centralwidget, u"label_4", (20, 60, 51, 16))
         
-        self.label_5 = newLabel(self.centralwidget, u"label_5", (580, 380, 51, 16))
+        self.label_5 = newLabel(self.centralwidget, u"label_5", (((3/4)*windowWidth) - 70, 340, 51, 16))
 
-        self.GenderLabel = newLabel(self.centralwidget, u"GenderLabel", (630, 380, 71, 16))
+        self.GenderLabel = newLabel(self.centralwidget, u"GenderLabel", (645, 340, 71, 16))
 
-        self.label_3 = newLabel(self.centralwidget, u"label_3", (550, 400, 81, 16))
+        self.label_3 = newLabel(self.centralwidget, u"label_3", (((3/4)*windowWidth) - 70, 360, 81, 16))
         
-        self.NumFavsLabel = newLabel(self.centralwidget, u"NumFavsLabel", (630, 400, 51, 16))
+        self.NumFavsLabel = newLabel(self.centralwidget, u"NumFavsLabel", (645, 360, 51, 16))
 
     
 
@@ -118,7 +119,7 @@ class UserHomePage(QMainWindow):
         self.scrollArea = QScrollArea(self.centralwidget)
         self.scrollArea.setStyleSheet("background-color: black;")
         self.scrollArea.setObjectName(u"scrollArea")
-        self.scrollArea.setGeometry(QRect(0, 80, 400, 451))
+        self.scrollArea.setGeometry(QRect(15, 80, 370, 451))
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
 
@@ -143,6 +144,11 @@ class UserHomePage(QMainWindow):
 
         self.horizontalLayout.addWidget(self.SortByBox)
 
+        self.MediaSearchButton = QPushButton(self.centralwidget, clicked=lambda: self.openSearchWindow())
+        # self.MediaSearchButton = QPushButton(self.centralwidget, clicked=lambda: self.openSearchWindow())
+        self.MediaSearchButton.setObjectName(u"MediaSearchButton")
+        self.MediaSearchButton.setGeometry(QRect(((1/4)*windowWidth) - 50, 10, 100, 41))
+
         self.setCentralWidget(self.centralwidget)
 
         #self.menubar = QMenuBar(self)
@@ -161,7 +167,7 @@ class UserHomePage(QMainWindow):
     def _createMenuBar(self):
         menuBar = QMenuBar(self)
         self.setMenuBar(menuBar)
-        movieMenu = QMenu("&Movies", self)
+        movieMenu = QMenu("User Homepage", self)
         menuBar.addMenu(movieMenu)
 
     def _createToolBar(self):
@@ -174,7 +180,7 @@ class UserHomePage(QMainWindow):
         
 
     def retranslateUi(self, UserHomePage):
-        UserHomePage.setWindowTitle(QCoreApplication.translate("UserHomePage", u"User Page", None))
+        UserHomePage.setWindowTitle(QCoreApplication.translate("UserHomePage", u"FilmFriend", None))
         self.MediaSearchButton.setText(QCoreApplication.translate("UserHomePage", u"Search Media", None))
         self.label.setText("")
         self.UserNameLabel.setText(QCoreApplication.translate("UserHomePage", u"USERNAME HERE", None))
@@ -219,6 +225,8 @@ class UserHomePage(QMainWindow):
         self.showWindow.ShowSynopsisLabel.setText(synopsis)
         season_string = f'Number of Seasons: {numSeasons}'
         episode_string = f'Number of Episodes: {numEpisdoes}'
+        rating_string = f'IMDb rating: {rating}'
+        self.showWindow.ShowRatingLabel.setText(rating_string)
         self.showWindow.ShowNumSeasonsLabel.setText(season_string)
         self.showWindow.ShowNumEpisodesLabel.setText(episode_string)
         # Self..setFixedSize(200, 260)
@@ -248,6 +256,8 @@ class UserHomePage(QMainWindow):
         self.movieWindow.MovieSynopsisLabel.setText(synopsis)
         runtime_string = f'Runtime: {runtime} min'
         self.movieWindow.label_3.setText(runtime_string)
+        rating_string = f'IMDb rating: {rating}'
+        self.movieWindow.MovieRatingLabel.setText(rating_string)
         self.movieWindow.MovieImageLabel.setPixmap(QPixmap(f'image_holder/{id}'))
         self.movieWindow.MovieImageLabel.setScaledContents(True)
 
@@ -295,26 +305,40 @@ class UserHomePage(QMainWindow):
             if self.gridLayout.itemAt(i):
                 self.gridLayout.itemAt(i).widget().deleteLater()
 
-        for favorite in self.currentUserFavorites:
-            media_image = QLabel(self.centralwidget)
-            media_image.setObjectName(u"label")
-            media_image.setFixedSize(200, 260)
-            media_image.setPixmap(QPixmap(f'image_holder/{favorite[1]}'))
-            media_image.setScaledContents(True)
-            if favorite[3] == 'show':
-                self.media_button = QPushButton(favorite[2])
-
-                self.media_button.setGeometry(QRect(320, 20, 101, 31))
-                self.media_button.clicked.connect(self.openShowWindow)
-            else:
-                self.media_button = QPushButton(favorite[2])
-                self.media_button.clicked.connect(self.openMovieWindow)
-            self.media_button.setText(favorite[2])
-            self.media_button.setStyleSheet("background: orange")
-
-            self.gridLayout.addWidget(media_image)
-            self.gridLayout.addWidget(self.media_button)
         numFavs = psql.getNumFavs(self.currentUser)
+        if numFavs > 0:
+            for favorite in self.currentUserFavorites:
+                media_image = QLabel(self.centralwidget)
+                media_image.setObjectName(u"label")
+                media_image.setFixedSize(200, 260)
+                media_image.setPixmap(QPixmap(f'image_holder/{favorite[1]}'))
+                media_image.setScaledContents(True)
+                if favorite[3] == 'show':
+                    self.media_button = QPushButton(favorite[2])
+
+                    self.media_button.setGeometry(QRect(320, 20, 101, 31))
+                    self.media_button.clicked.connect(self.openShowWindow)
+                    self.media_button.setStyleSheet("background: indianred")
+                else:
+                    self.media_button = QPushButton(favorite[2])
+                    self.media_button.clicked.connect(self.openMovieWindow)
+                    self.media_button.setStyleSheet("background: darksalmon")
+                self.media_button.setText(favorite[2])
+                
+
+                self.gridLayout.addWidget(media_image)
+                self.gridLayout.addWidget(self.media_button)
+        else:
+            print("no favorites")
+            no_favs_label = QLabel(self.centralwidget)
+            no_favs_label.setGeometry(QRect(400, 20, 80, 50))
+            no_favs_label.setText('Click "Search Media" to find your favorite movies and shows!')
+            no_favs_label.setStyleSheet("font-size: 14px;")
+            no_favs_label.setAlignment(Qt.AlignCenter)
+            #self.no_favs_label
+            self.gridLayout.addWidget(no_favs_label)
+
+        
         self.NumFavsLabel.setText(str(numFavs))
         widget = QWidget()
         widget.setLayout(self.gridLayout)
@@ -353,11 +377,13 @@ class UserHomePage(QMainWindow):
             if item[4] == 'show':
                 media_button = QPushButton(item[0])
                 media_button.clicked.connect(self.openShowWindow)
+                media_button.setStyleSheet("background: indianred")
             else:
                 media_button = QPushButton(item[0])
                 media_button.clicked.connect(self.openMovieWindow)
+                media_button.setStyleSheet("background: darksalmon")
             media_button.setText(item[0])
-            media_button.setStyleSheet("background: orange")
+            
 
             self.searchWindow.gridLayout.addWidget(media_image)
             self.searchWindow.gridLayout.addWidget(media_button)
@@ -372,7 +398,4 @@ def newLabel(widget, name, geometry):
         label = QLabel(widget)
         label.setObjectName(name)
         label.setGeometry(QRect(geometry[0], geometry[1], geometry[2], geometry[3] ))
-        label.setStyleSheet(u"QLabel {\n"
-                                 "	color: white\n"
-                                "}")
         return label

@@ -20,7 +20,7 @@ class ShowWindow(QMainWindow):
         self.ShowFavoriteButton.setGeometry(QRect((windowWidth/2)-(200/2), 440, 200, 31))
         self.verticalLayoutWidget = QWidget(self)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(10, 270, 230, 131))
+        self.verticalLayoutWidget.setGeometry(QRect(10, 250, 230, 151))
         self.verticalLayout_2 = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -54,14 +54,17 @@ class ShowWindow(QMainWindow):
 
         self.verticalLayout_2.addWidget(self.ShowNumEpisodesLabel)
 
+        self.ShowRatingLabel = QLabel(self.verticalLayoutWidget)
+        self.ShowRatingLabel.setObjectName(u"ShowRatingLabel")
+
+        self.verticalLayout_2.addWidget(self.ShowRatingLabel)
+
         self.label = QLabel(self)
         self.label.setObjectName(u"label")
         self.label.setGeometry(QRect(((3/4) * windowWidth) - 25, 250, 50, 16))
-        self.label.setStyleSheet("background: gray")
         self.ShowSynopsisLabel = QLabel(self)
         self.ShowSynopsisLabel.setObjectName(u"ShowSynopsisLabel")
         self.ShowSynopsisLabel.setGeometry(QRect(((3/4) * windowWidth) - 75, 260, 150, 150))
-        self.ShowSynopsisLabel.setStyleSheet("background: black")
         self.ShowSynopsisLabel.setWordWrap(True)
         #self.ShowSynopsisLabel.setStyleSheet("text-align: justify;")
 
@@ -79,5 +82,6 @@ class ShowWindow(QMainWindow):
         self.ShowGenreLabel.setText(QCoreApplication.translate("S", u"Genres:", None))
         self.ShowNumSeasonsLabel.setText(QCoreApplication.translate("MovieWindow", u"Number of Seasons:", None))
         self.ShowNumEpisodesLabel.setText(QCoreApplication.translate("MovieWindow", u"Number of Episodes:", None))
+        self.ShowRatingLabel.setText(QCoreApplication.translate("ShowWindow", u"Rating:", None))
         self.label.setText(QCoreApplication.translate("S", u"Synopsis", None))
         self.ShowSynopsisLabel.setText(QCoreApplication.translate("S", u"SynopsisLabel", None))
