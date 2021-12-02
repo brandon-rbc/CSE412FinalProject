@@ -220,7 +220,7 @@ class UserHomePage(QMainWindow):
         self.movieWindow.MovieGenreLabel.setText(genre_string)
         self.movieWindow.MovieSynopsisLabel.setText(synopsis)
         runtime_string = f'Runtime: {runtime} min'
-        self.movieWindow.NumFavTitleLabel.setText(runtime_string)
+        self.movieWindow.label_3.setText(runtime_string)
         rating_string = f'IMDb rating: {rating}'
         self.movieWindow.MovieRatingLabel.setText(rating_string)
         self.movieWindow.MovieImageLabel.setPixmap(QPixmap(f'image_holder/{id}'))
@@ -296,7 +296,6 @@ class UserHomePage(QMainWindow):
 
          
         else:
-            print("no favorites")
             no_favs_label = QLabel(self.centralwidget)
             no_favs_label.setGeometry(QRect(320, 20, 101, 31))
             no_favs_label.setText('Click "Search Media" to find your favorite movies and shows!')
