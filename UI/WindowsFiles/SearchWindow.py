@@ -1,15 +1,19 @@
-from PySide6.QtWidgets import QTextEdit, QScrollArea
+from PySide6 import QtCore
+from PySide6.QtGui import QTextCursor
+from PySide6.QtWidgets import QLineEdit, QTextEdit, QScrollArea
 from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect, Qt)
 from PySide6.QtWidgets import (QComboBox, QGridLayout, QHBoxLayout,
-    QLabel, QMainWindow, QMenuBar, QPushButton, QStatusBar, QWidget)
+    QLabel, QMainWindow, QMenuBar, QPushButton, QStatusBar, QWidget, QMenu)
 
 
 class SearchWindow(QMainWindow):
-    def __init__(self):
+    def __init__(self, page):
         super().__init__()
         self.setFixedSize(803, 587)
         self.setObjectName("searchWindow")
         self.centralwidget = QWidget(self)
+        self.homepage = page
+        self._createMenuBar()
         #self.centralwidget.setStyleSheet("background-color: black;")
         self.gridLayoutWidget = QWidget(self.centralwidget)
         self.gridLayoutWidget.setObjectName(u"gridLayoutWidget")
@@ -23,7 +27,7 @@ class SearchWindow(QMainWindow):
         self.scrollArea.setStyleSheet("background-color: black;")
         self.scrollArea.setGeometry(QRect(20, 70, 761, 451))
         self.scrollArea.setWidgetResizable(True)
-        self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
+        #self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         self.scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         
         
@@ -37,11 +41,13 @@ class SearchWindow(QMainWindow):
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.pushButton = QPushButton(self.horizontalLayoutWidget)
         self.pushButton.setObjectName(u"pushButton")
+        self.pushButton.setStyleSheet("padding: 5px;")
 
         self.horizontalLayout_2.addWidget(self.pushButton)
 
-        self.textEdit = QTextEdit(self.horizontalLayoutWidget)
+        self.textEdit = QLineEdit(self.horizontalLayoutWidget)
         self.textEdit.setObjectName(u"textEdit")
+        self.textEdit.installEventFilter(self)
 
         self.horizontalLayout_2.addWidget(self.textEdit)
 
@@ -74,25 +80,27 @@ class SearchWindow(QMainWindow):
         self.SortByBoxSearch.addItem("")
         self.SortByBoxSearch.addItem("")
         self.SortByBoxSearch.setObjectName(u"SortByBoxSearch")
+        #self.SortByBoxSearch.currentIndexChanged.connect(self.homepage.updateSearchOptions())
+        self.SortByBoxSearch.currentIndexChanged.connect(self.homepage.updateSearchOptions)
 
         self.horizontalLayout.addWidget(self.SortByBoxSearch)
 
         self.setCentralWidget(self.centralwidget)
-        self.menubar = QMenuBar(self)
-        self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 803, 22))
-        self.setMenuBar(self.menubar)
-        self.statusbar = QStatusBar(self)
-        self.statusbar.setObjectName(u"statusbar")
-        self.setStatusBar(self.statusbar)
+
 
         self.retranslateUi(self)
 
         QMetaObject.connectSlotsByName(self)
         # setupUi
 
-    def retranslateUi(self, SearchWindow):
-        SearchWindow.setWindowTitle(QCoreApplication.translate("SearchWindow", u"Search Media", None))
+    def _createMenuBar(self):
+        menuBar = QMenuBar(self)
+        self.setMenuBar(menuBar)
+        movieMenu = QMenu("Media Search", self)
+        menuBar.addMenu(movieMenu)
+
+    def retranslateUi(self, SearchWindow):#qtdesigner generated code
+        SearchWindow.setWindowTitle(QCoreApplication.translate("SearchWindow", u"FilmFriend", None))
         self.pushButton.setText(QCoreApplication.translate("SearchWindow", u"Search", None))
         self.label.setText(QCoreApplication.translate("SearchWindow", u"Search By:", None))
         self.SortByBoxSearch_2.setItemText(0, QCoreApplication.translate("SearchWindow", u"Title", None))
@@ -102,3 +110,10 @@ class SearchWindow(QMainWindow):
         self.label_6.setText(QCoreApplication.translate("SearchWindow", u"Sort By:", None))
         self.SortByBoxSearch.setItemText(0, QCoreApplication.translate("SearchWindow", u"Rating", None))
         self.SortByBoxSearch.setItemText(1, QCoreApplication.translate("SearchWindow", u"A-Z", None))
+
+    def eventFilter(self, obj, event):
+        if event.type() == QtCore.QEvent.KeyPress and obj is self.textEdit:
+            if event.key() == QtCore.Qt.Key_Return and self.textEdit.hasFocus():
+                self.homepage.updateSearchOptions()
+                self.textEdit.clear()
+        return super().eventFilter(obj, event)

@@ -104,6 +104,7 @@ def getSearchMedia(sort_method, search_method, search_query):
         while result:
             genreFound = False
             for genre in result[2]:
+                genre = genre.upper()
                 if genre.find(search_query) != -1:
                     genreFound = True
             if genreFound:

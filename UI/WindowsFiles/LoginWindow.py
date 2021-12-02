@@ -45,7 +45,7 @@ class LoginWindow(QMainWindow):
         QMetaObject.connectSlotsByName(self)
         # setupUi
 
-    def retranslateUi(self, LoginWindow):
+    def retranslateUi(self, LoginWindow):#qtdesign generated code
         LoginWindow.setWindowTitle(QCoreApplication.translate("LoginWindow", u"Login", None))
         self.label.setText(QCoreApplication.translate("LoginWindow", u"User Info", None))
         self.label_2.setText(QCoreApplication.translate("LoginWindow", u"Username:", None))

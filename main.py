@@ -3,13 +3,14 @@ from PySide6.QtWidgets import (QApplication)
 import backend.psql_handlers as psql
 import image_download
 from UI.WindowsFiles.UserHomePage import UserHomePage
+# CSS code for display functionality
 qss = """
 
 QPushButton {
-    background-color: dimgray; 
+    background-color: #404040; 
     border-radius: 5px; 
     color: white; 
-    font-family: 'Gotham Medium', sans-serif; 
+    font-family: 'Trebuchet MS, sans-serif; 
     font-weight: bold;
 }
 
@@ -24,22 +25,22 @@ QMenuBar {
 
 QMainWindow {
     background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1,
-                                      stop:0 #9198e5, stop:1 #282629);
+                                      stop:0 #eb3434, stop:1 #282629);
 }
 
 #showWindow {
     background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1,
-                                      stop:0 #e66465, stop:1 #282629);
+                                      stop:0 indianred, stop:1 #282629);
 }
 
 #movieWindow {
     background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1,
-                                      stop:0 #34DB61, stop:1 #282629);
+                                      stop:0 darksalmon, stop:1 #282629);
 }
 
 #searchWindow {
     background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1,
-                                      stop:0 #b7c421, stop:1 #282629);
+                                      stop:0 #db630d, stop:1 #282629);
 }
 
 #loginWindow {
@@ -48,22 +49,26 @@ QMainWindow {
 }
 
 
+#mediaButton:hover {
+    color: black;
 
+}
 
-
-
-
-
-
+#UserNameLabel {
+    font-weight: bold; 
+    font-size: large; 
+    color: black;
+}
 
 QPushButton:hover {
-    background-color: #9518fc;
-    color: yellow;
+    background-color: darkgray;
+    color:black;
 }
+
 
 QLabel {
     color: white;
-    font-family: 'Gotham Medium', sans-serif;
+    font-family: 'Trebuchet MS', sans-serif;
 }
 
 #searchCentralWidget {

@@ -1,5 +1,6 @@
+from PySide6.QtGui import Qt
 from PySide6.QtWidgets import QVBoxLayout
-from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect)
+from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect, QThreadPool)
 
 from PySide6.QtWidgets import (QLabel, QMainWindow, QPushButton,QWidget, QScrollArea)
 
@@ -16,7 +17,7 @@ class MovieWindow(QMainWindow):
         self.MovieImageLabel.setGeometry(QRect((windowWidth/2)-(180/2), 10, 180, 221))
         self.verticalLayoutWidget = QWidget(self)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect((windowWidth/4) - 80, 270, 160, 151))
+        self.verticalLayoutWidget.setGeometry(QRect((windowWidth/4) - 100, 250, 200, 151))
         self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -39,6 +40,11 @@ class MovieWindow(QMainWindow):
         self.MovieGenreLabel.setObjectName(u"MovieGenreLabel")
 
         self.verticalLayout.addWidget(self.MovieGenreLabel)
+
+        self.MovieRatingLabel = QLabel(self.verticalLayoutWidget)
+        self.MovieRatingLabel.setObjectName(u"MovieRatingLabel")
+
+        self.verticalLayout.addWidget(self.MovieRatingLabel)
 
         self.label_3 = QLabel(self.verticalLayoutWidget)
         self.label_3.setObjectName(u"label_3")
@@ -67,12 +73,13 @@ class MovieWindow(QMainWindow):
         QMetaObject.connectSlotsByName(self)
         # setupUi
 
-    def retranslateUi(self, MovieWindow):
+    def retranslateUi(self, MovieWindow):#qtdesigner generated code
         MovieWindow.setWindowTitle(QCoreApplication.translate("MovieWindow", u"Movie", None))
         self.MovieTitleLabel.setText(QCoreApplication.translate("MovieWindow", u"Title:", None))
         self.MovieYearLabel.setText(QCoreApplication.translate("MovieWindow", u"Year of Release:", None))
         self.MovieDirectorLabel.setText(QCoreApplication.translate("MovieWindow", u"Director:", None))
         self.MovieGenreLabel.setText(QCoreApplication.translate("MovieWindow", u"Genres:", None))
+        self.MovieRatingLabel.setText(QCoreApplication.translate("MovieWindow", u"Rating:", None))
         self.label.setText(QCoreApplication.translate("MovieWindow", u"Synopsis", None))
         self.label_3.setText(QCoreApplication.translate("S", u"Runtime:", None))
         self.MovieSynopsisLabel.setText(QCoreApplication.translate("MovieWindow", u"SynopsisLabel", None))
