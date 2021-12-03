@@ -17,7 +17,6 @@ You must first install the following dependencies before running this software:
  1. Python(3.8)
  2. PostgreSQL(12.4+)
  3. PyQT5 (5.15.1)
- 4. 
 
 After installing the dependencies, open up a window of Windows PowerShell. 
 In PowerShell, begin by typing
@@ -55,7 +54,7 @@ After initializing the database (you just did this), run the following command t
 > .\pg_ctl -D C:\Users\(your username)\PycharmProjects\CSE412FinalProject\database start
 ```
 
-###If this is not working, try the following
+### If this is not working, try the following
 
 Go to C:\Program Files\PostgreSQL\14\data (default)
 Open "pg_hba.conf" in Notepad or Notepad++. 
