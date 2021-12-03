@@ -17,6 +17,7 @@ You must first install the following dependencies before running this software:
  1. Python(3.8)
  2. PostgreSQL(12.4+)
  3. PyQT5 (5.15.1)
+ 4. Pip (2.21+)
 
 After installing the dependencies, open up a window of Windows PowerShell. 
 In PowerShell, begin by typing
@@ -38,10 +39,19 @@ and
 ```
 
 ## Files
-Open PyCharm. 
+Open PyCharm and create a new project/virtual environment. If you are having issues setting up the venv, please refer to this link :(https://www.jetbrains.com/help/pycharm/creating-virtual-environment.html)
 Click "Get from VCS" and install Git if it has not already been installed. 
 Then, copy and paste the link to our repository (https://github.com/brandon-rbc/CSE412FinalProject) where it says "URL:"
 Click Clone. You may be asked to log into GitHub. If so, click "Log in with GitHub," and then click the Authorize button when the new page is opened. 
+
+## Libraries
+We must install a few python libraries. To do so, open the terminal in PyCharm and run these:
+```
+> pip install pyside6
+```
+```
+> pip install psycopg2-binary
+```
 
 Now, go to the folder you cloned the repository to. If you left it default, it should be C:\Users\(your username)\PycharmProjects\CSE412FinalProject 
 In this folder, create a new folder called "database". 
@@ -79,6 +89,18 @@ Now that the database is started, create a user by typing
 ```
 
 This creates a user for the database. 
+
+## Create/Fill database tables
+We must make and fill our database tables for the program to interact with. This involves us changing directories to the \psql_scripts directory and running:
+```
+> .\psql -d $USER -f create_tables.sql
+```
+```
+> .\psql -d $USER -f fill_tables.sql
+```
+## Connecting database to program
+Lastly, we must make sure that our program is connecting to the correct instance of postgres running locally. To do so, locate and open the `handlers.py` file in the `\backend` directory. Once open, change the port values on line 12 and line 22 to 8888, and change the "user" values on line 9 and line 19 to your computer's username. This can be found ny typing `whoami` in a powershell terminal. (Keep in mind that this will return an all lowercased version of your username, and to verify the capitalization you can locate the `C:\Users\` folder and find the matching username.
+
 
 # Tutorial/How to Use
 Now that you've installed the app, here's an overview of how to use FilmFriend. 
