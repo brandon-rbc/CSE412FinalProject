@@ -94,12 +94,15 @@ Now that the database is started, create a user by typing
 This creates a user for the database. 
 
 ## Create/Fill database tables
-We must make and fill our database tables for the program to interact with. This involves us changing directories to the \psql_scripts directory and running:
+We must make and fill our database tables for the program to interact with. This involves us changing directories back to the postgresql directory and running the two scripts in the psql_scripts directory. Run these three lines in a powershell terminal:
 ```
-> .\psql -d $USER -f create_tables.sql
+> cd "(your install location)\PostgreSQL\14\bin"
 ```
 ```
-> .\psql -d $USER -f fill_tables.sql
+> .\psql -d $USER -f C:\Users\(your username)\PycharmProjects\CSE412FinalProject\psql_scripts\create_tables.sql
+```
+```
+> .\psql -d $USER -f C:\Users\(your username)\PycharmProjects\CSE412FinalProject\psql_scripts\fill_tables.sql
 ```
 ## Connecting database to program
 Lastly, we must make sure that our program is connecting to the correct instance of postgres running locally. To do so, locate and open the `handlers.py` file in the `\backend` directory. Once open, change the port values on line 12 and line 22 to 8888 (if you set PGHOST=localhost, change these lines to 5432), and change the "user" values on line 9 and line 19 to your computer's username. This can be found ny typing `whoami` in a powershell terminal. (Keep in mind that this will return an all lowercased version of your username, and to verify the capitalization you can locate the `C:\Users\` folder and find the matching username.
