@@ -16,8 +16,11 @@ This includes **Python 3.8**, **PostgreSQL**, and **PyCharm6**, as well as the c
 You must first install the following dependencies before running this software:
  1. Python(3.8)
  2. PostgreSQL(12.4+)
- 3. PyQT5 (5.15.1)
- 4. Pip (2.21+)
+ 3. Pip (2.21+)
+ 4. PySide6 (6.2.1)
+ 5. Psycopg2 (Binary v2.9.2)
+
+This involves installing python libraries, which will be covered down inhe [Libraries](#libraries) section below.
 
 After installing the dependencies, open up a window of Windows PowerShell. 
 In PowerShell, begin by typing
