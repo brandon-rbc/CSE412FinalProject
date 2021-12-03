@@ -35,7 +35,7 @@ Still in PowerShell, type
 ```
 and
 ```
-> set PGPORT=5432
+> set PGPORT=8888
 ```
 
 ## Files
