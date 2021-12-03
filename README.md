@@ -44,7 +44,7 @@ Click "Get from VCS" and install Git if it has not already been installed.
 Then, copy and paste the link to our repository (https://github.com/brandon-rbc/CSE412FinalProject) where it says "URL:"
 Click Clone. You may be asked to log into GitHub. If so, click "Log in with GitHub," and then click the Authorize button when the new page is opened. 
 
-#Libraries
+# Libraries
 We must install a few python libraries. To do so, open the terminal and run these:
 ```
 > pip install pyside6
