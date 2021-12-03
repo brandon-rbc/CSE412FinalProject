@@ -45,7 +45,7 @@ Then, copy and paste the link to our repository (https://github.com/brandon-rbc/
 Click Clone. You may be asked to log into GitHub. If so, click "Log in with GitHub," and then click the Authorize button when the new page is opened. 
 
 ## Libraries
-We must install a few python libraries. To do so, open the terminal and run these:
+We must install a few python libraries. To do so, open the terminal in pycharm and run these:
 ```
 > pip install pyside6
 ```
