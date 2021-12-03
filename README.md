@@ -94,7 +94,7 @@ Now that the database is started, create a user by typing
 This creates a user for the database. 
 
 ## Create/Fill database tables
-We must make and fill our database tables for the program to interact with. This involves us changing directories back to the postgresql directory and running the two scripts in the psql_scripts directory. Run these three lines in your terminal:
+We must make and fill our database tables for the program to interact with. This involves us changing directories back to the postgresql directory and running the two scripts in the psql_scripts directory. Run these three lines in a powershell terminal:
 ```
 > cd "(your install location)\PostgreSQL\14\bin"
 ```
