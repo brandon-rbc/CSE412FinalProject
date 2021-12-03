@@ -75,6 +75,8 @@ QLabel {
     background-color: black;
 }
 """
+
+#main method to run application
 if __name__ == "__main__":
     psql.main()
     image_download.downloadImages()

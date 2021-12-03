@@ -5,8 +5,8 @@ from PySide6.QtWidgets import (QLabel, QMainWindow, QPushButton, QWidget)
 
 windowWidth = 450
 windowHeight = 490
-
 class ShowWindow(QMainWindow):
+    #initializes all elements of ShowWindow including UI
     def __init__(self):
         super().__init__()
         self.mediaID = -1
@@ -66,12 +66,10 @@ class ShowWindow(QMainWindow):
         self.ShowSynopsisLabel.setObjectName(u"ShowSynopsisLabel")
         self.ShowSynopsisLabel.setGeometry(QRect(((3/4) * windowWidth) - 75, 260, 150, 150))
         self.ShowSynopsisLabel.setWordWrap(True)
-        #self.ShowSynopsisLabel.setStyleSheet("text-align: justify;")
 
         self.retranslateUi(self)
 
         QMetaObject.connectSlotsByName(self)
-    # setupUi
 
     def retranslateUi(self, S):#qtdesigner generated code
         S.setWindowTitle(QCoreApplication.translate("S", u"Show", None))

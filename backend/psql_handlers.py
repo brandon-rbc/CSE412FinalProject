@@ -14,6 +14,7 @@ connection = psycopg2.connect(user="acgfo",
 
 cursor = connection.cursor()
 
+#connects to local database
 def main():
     try:
         connection = psycopg2.connect(user="acgfo",
@@ -28,9 +29,7 @@ def main():
     else:
         print('Successful connection to psql!')
 
-    # updateUserInfo('steve', 12, 'm')
-
-
+#performs sql query to get images from database
 def get_images():
     cursor.execute(r'SELECT "mediaObject".mediaID, "mediaObject".poster_url FROM "mediaObject";')
     result = cursor.fetchone()
@@ -41,12 +40,14 @@ def get_images():
         result = cursor.fetchone()
     return img_list
 
+#performs sql query to get number of favorites of inputted user
 def getNumFavs(id):
     cursor.execute(f'SELECT COUNT(*) FROM "favoritedBy" '
                    f'WHERE "favoritedBy".userID = {id};')
     result = cursor.fetchone()
     return result[0]
 
+#performs sql query to find mediaObjects based on sort method, search method, and search query
 def getSearchMedia(sort_method, search_method, search_query):
     media_list = []
     search_query = search_query.upper()
@@ -132,7 +133,7 @@ def getSearchMedia(sort_method, search_method, search_query):
         media_list = sorted(media_list, key=operator.itemgetter(0))
     return media_list
 
-
+#creates new user based on inputted data and updates
 def updateUserInfo(username, age, gender, sort_method):
     cursor.execute(f'SELECT "user".userID FROM "user" '  
                    f'WHERE "user".username = \'{username}\' '
@@ -200,16 +201,11 @@ def updateUserInfo(username, age, gender, sort_method):
 
     return(userID, sorted_list)
 
+#performs sql query to add favorite to user
 def addFavorite(userID, mediaID):
     cursor.execute(f"INSERT INTO \"favoritedBy\" VALUES ('{userID}', '{mediaID}', '{date.today()}');")
-    # cursor.execute(f'SELECT * FROM "favoritedBy" '
-    #                f'WHERE "favoritedBy".userID = {userID};')
-    # result = cursor.fetchone()
-    # while(result):
-    #     print(result)
-    #     result = cursor.fetchone()
 
-
+#performs sql query to remove favorite from user
 def removeFavorite(userID, mediaID):
     cursor.execute(f"DELETE FROM \"favoritedBy\" WHERE \"favoritedBy\".userID = {userID} AND \"favoritedBy\".mediaID = {mediaID}")
     cursor.execute(
@@ -219,7 +215,7 @@ def removeFavorite(userID, mediaID):
         # print(result)
         result = cursor.fetchone()
 
-
+#performs sql query to check if mediaID is in user favorites list
 def checkInFavorites(userID, mediaID):
     cursor.execute(f"SELECT * FROM \"favoritedBy\" WHERE \"favoritedBy\".userID = {userID} AND \"favoritedBy\".mediaID = {mediaID}")
     result = cursor.fetchone()
@@ -228,6 +224,7 @@ def checkInFavorites(userID, mediaID):
     else:
         return False
 
+#returns mediaID of inputted media name
 def getMediaID(name):
     temp = name.replace("'", "''")
     cursor.execute(f'SELECT "mediaObject".mediaID FROM "mediaObject" '
@@ -236,6 +233,7 @@ def getMediaID(name):
     # print(result[0])
     return result[0]
 
+#returns info of given show name
 def getShowInfo(name):
     temp = name.replace("'", "''")
     cursor.execute(f'SELECT * FROM "mediaObject" '
@@ -260,7 +258,7 @@ def getShowInfo(name):
     director = result[0]
     return id, year, director, genres, numSeasons, numEpisodes, synopsis, rating
 
-
+#returns info of given movie name
 def getMovieInfo(name):
     temp = name.replace("'", "''")
     cursor.execute(f'SELECT * FROM "mediaObject" '

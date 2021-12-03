@@ -7,6 +7,7 @@ from PySide6.QtWidgets import (QComboBox, QGridLayout, QHBoxLayout,
 
 
 class SearchWindow(QMainWindow):
+    #initializes all elements of SearchWindow including UI
     def __init__(self, page):
         super().__init__()
         self.setFixedSize(803, 587)
@@ -14,25 +15,20 @@ class SearchWindow(QMainWindow):
         self.centralwidget = QWidget(self)
         self.homepage = page
         self._createMenuBar()
-        #self.centralwidget.setStyleSheet("background-color: black;")
+    
         self.gridLayoutWidget = QWidget(self.centralwidget)
         self.gridLayoutWidget.setObjectName(u"gridLayoutWidget")
         self.gridLayoutWidget.setGeometry(QRect(20, 70, 761, 451))
         self.gridLayoutWidget.setStyleSheet("background-color: black;")
         self.gridLayout = QGridLayout(self.gridLayoutWidget)
-        #self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
 
         self.scrollArea = QScrollArea(self.centralwidget)
         self.scrollArea.setStyleSheet("background-color: black;")
         self.scrollArea.setGeometry(QRect(20, 70, 761, 451))
         self.scrollArea.setWidgetResizable(True)
-        #self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         self.scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         
-        
-
-
         self.horizontalLayoutWidget = QWidget(self.centralwidget)
         self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
         self.horizontalLayoutWidget.setGeometry(QRect(320, 20, 451, 31))
@@ -80,26 +76,26 @@ class SearchWindow(QMainWindow):
         self.SortByBoxSearch.addItem("")
         self.SortByBoxSearch.addItem("")
         self.SortByBoxSearch.setObjectName(u"SortByBoxSearch")
-        #self.SortByBoxSearch.currentIndexChanged.connect(self.homepage.updateSearchOptions())
         self.SortByBoxSearch.currentIndexChanged.connect(self.homepage.updateSearchOptions)
 
         self.horizontalLayout.addWidget(self.SortByBoxSearch)
 
         self.setCentralWidget(self.centralwidget)
 
-
         self.retranslateUi(self)
 
         QMetaObject.connectSlotsByName(self)
         # setupUi
 
+    #adds menu bar to SearchWindow
     def _createMenuBar(self):
         menuBar = QMenuBar(self)
         self.setMenuBar(menuBar)
         movieMenu = QMenu("Media Search", self)
         menuBar.addMenu(movieMenu)
 
-    def retranslateUi(self, SearchWindow):#qtdesigner generated code
+    #qtdesigner generated code
+    def retranslateUi(self, SearchWindow):
         SearchWindow.setWindowTitle(QCoreApplication.translate("SearchWindow", u"FilmFriend", None))
         self.pushButton.setText(QCoreApplication.translate("SearchWindow", u"Search", None))
         self.label.setText(QCoreApplication.translate("SearchWindow", u"Search By:", None))

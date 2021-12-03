@@ -14,6 +14,7 @@ from UI.WindowsFiles.ShowWindow import ShowWindow
 windowWidth = 800
 windowHeight = 600
 class UserHomePage(QMainWindow):
+    #initializes all elements of UserHomePage including UI
     def __init__(self):
         super().__init__()
         
@@ -61,14 +62,10 @@ class UserHomePage(QMainWindow):
 
         self.UserImage.setScaledContents(True)
 
-        
-        
-
         self.ChangeUserButton = QPushButton(self.centralwidget, clicked=lambda: self.openLoginWindow())
         self.ChangeUserButton.setObjectName(u"ChangeUserButton")
         self.ChangeUserButton.setGeometry(QRect((3 / 4) * windowWidth-37, 390, 75, 24)) #centering button
     
-
         self.UserNameLabel = newLabel(self.centralwidget, u"UserNameLabel", (((3/4)*windowWidth) - 45, 300, 90, 20))
         self.UserNameLabel.setAlignment(Qt.AlignCenter)#align username center
         self.ageTitleLabel = newLabel(self.centralwidget, u"ageTitleLabel", (((3/4)*windowWidth) - 70, 320, 31, 16))
@@ -80,7 +77,6 @@ class UserHomePage(QMainWindow):
         self.NumFavTitleLabel = newLabel(self.centralwidget, u"NumFavTitleLabel", (((3/4)*windowWidth) - 70, 360, 81, 16))
         self.NumFavsLabel = newLabel(self.centralwidget, u"NumFavsLabel", (645, 360, 51, 16))
 
-    
         self.gridLayoutWidget = QWidget(self.centralwidget)
         self.gridLayoutWidget.setObjectName(u"gridLayoutWidget")
         self.gridLayoutWidget.setGeometry(QRect(0, 80, 400, 451))
@@ -95,7 +91,6 @@ class UserHomePage(QMainWindow):
         self.scrollArea.setGeometry(QRect(15, 80, 370, 451))
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-
 
         self.horizontalLayoutWidget = QWidget(self.centralwidget)
         self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
@@ -123,27 +118,18 @@ class UserHomePage(QMainWindow):
 
         self.setCentralWidget(self.centralwidget)
 
-
         self.statusbar = QStatusBar(self)
         self.statusbar.setObjectName(u"statusbar")
         self.setStatusBar(self.statusbar)
 
-
+    #adds menu bar to window
     def _createMenuBar(self):
         menuBar = QMenuBar(self)
         self.setMenuBar(menuBar)
         movieMenu = QMenu("User Homepage", self)
         menuBar.addMenu(movieMenu)
 
-    def _createToolBar(self):
-        testToolBar = QToolBar("Edit", self)
-        self.addToolBar(Qt.BottomToolBarArea, testToolBar)
-        testToolBar.addAction(self.profileAction)
-
-    def _createActions(self):
-         self.profileAction = QAction(QIcon("Assets/ProfileImage.png"), "&Open...", self)
-        
-
+    #qtdesigner generated code
     def retranslateUi(self, UserHomePage):
         UserHomePage.setWindowTitle(QCoreApplication.translate("UserHomePage", u"FilmFriend", None))
         self.MediaSearchButton.setText(QCoreApplication.translate("UserHomePage", u"Search Media", None))
@@ -161,13 +147,16 @@ class UserHomePage(QMainWindow):
         self.SortByBox.setItemText(0, QCoreApplication.translate("UserHomePage", u"Rating", None))
         self.SortByBox.setItemText(1, QCoreApplication.translate("UserHomePage", u"A-Z", None))
 
+    #displays login window
     def openLoginWindow(self):
         self.loginWindow.show()
 
+    #displays search window
     def openSearchWindow(self):
         self.updateSearchOptions()
         self.searchWindow.show()
 
+    #fetches show info from database and passes into new show window
     def openShowWindow(self):
         button = self.sender()
         name = button.text()
@@ -175,11 +164,14 @@ class UserHomePage(QMainWindow):
         self.showWindow.ShowTitleLabel.setText(f'Title: {name}')
         mediaID = psql.getMediaID(name)
         self.showWindow.mediaID = mediaID
-        # print(self.showWindow.mediaID)
+        
+        #checks if show is in favorites. changes button accordingly
         if psql.checkInFavorites(self.currentUser, mediaID):
             self.showWindow.ShowFavoriteButton.setText('Remove from Favorites')
         else:
             self.showWindow.ShowFavoriteButton.setText('Add to Favorites')
+        
+        #passes show data into labels
         id, year, director, genres, numSeasons, numEpisdoes, synopsis, rating = psql.getShowInfo(name)
         year_string = f'Year of Release: {str(year)}'
         self.showWindow.ShowYearLabel.setText(year_string)
@@ -194,11 +186,11 @@ class UserHomePage(QMainWindow):
         self.showWindow.ShowRatingLabel.setText(rating_string)
         self.showWindow.ShowNumSeasonsLabel.setText(season_string)
         self.showWindow.ShowNumEpisodesLabel.setText(episode_string)
-        # Self..setFixedSize(200, 260)
         self.showWindow.ShowImageLabel.setPixmap(QPixmap(f'image_holder/{id}'))
         self.showWindow.ShowImageLabel.setScaledContents(True)
         self.showWindow.show()
 
+    #fetches show info from database and passes into new show window
     def openMovieWindow(self):
         button = self.sender()
         name = button.text()
@@ -206,11 +198,14 @@ class UserHomePage(QMainWindow):
         self.movieWindow.MovieTitleLabel.setText(f'Title: {name}')
         mediaID = psql.getMediaID(name)
         self.movieWindow.mediaID = mediaID
+
+        #checks if movie is in favorites. changes button accordingly
         if psql.checkInFavorites(self.currentUser, mediaID):
             self.movieWindow.MovieFavoriteButton.setText('Remove from Favorites')
         else:
             self.movieWindow.MovieFavoriteButton.setText('Add to Favorites')
 
+        #passes movie data into labels
         id, year, director, genres, runtime, synopsis, rating = psql.getMovieInfo(name)
         year_string = f'Year of Release: {str(year)}'
         self.movieWindow.MovieYearLabel.setText(year_string)
@@ -225,9 +220,9 @@ class UserHomePage(QMainWindow):
         self.movieWindow.MovieRatingLabel.setText(rating_string)
         self.movieWindow.MovieImageLabel.setPixmap(QPixmap(f'image_holder/{id}'))
         self.movieWindow.MovieImageLabel.setScaledContents(True)
-
         self.movieWindow.show()
 
+    #updates favorite button after adding/removing from user favorites
     def updateMovieFavorite(self):
         sender = self.sender()
         if sender.text() == 'Add to Favorites':
@@ -238,6 +233,7 @@ class UserHomePage(QMainWindow):
             self.movieWindow.MovieFavoriteButton.setText('Add to Favorites')
         self.updateUser()
 
+    #updates favorite button after adding/removing from user favorites
     def updateShowFavorite(self):
         sender = self.sender()
         if sender.text() == 'Add to Favorites':
@@ -248,7 +244,9 @@ class UserHomePage(QMainWindow):
             self.showWindow.ShowFavoriteButton.setText('Add to Favorites')
         self.updateUser()
 
+    #updates user information and favorites
     def updateUser(self):
+        #updates labels
         username = self.loginWindow.textEdit.toPlainText()
         age = self.loginWindow.textEdit_2.toPlainText()
         gender = self.loginWindow.textEdit_3.toPlainText()
@@ -262,7 +260,6 @@ class UserHomePage(QMainWindow):
             self.currentUser = newUser
         else:
             self.currentUser = newUser
-        # print(f'current user: {self.currentUser}')
 
         #clear gridlayout
         num_delete = self.gridLayout.columnCount() * self.gridLayout.rowCount()
@@ -270,6 +267,7 @@ class UserHomePage(QMainWindow):
             if self.gridLayout.itemAt(i):
                 self.gridLayout.itemAt(i).widget().deleteLater()
 
+        #finds user favorites and displays them in scroll area
         numFavs = psql.getNumFavs(self.currentUser)
         if numFavs > 0:
             for favorite in self.currentUserFavorites:
@@ -294,37 +292,27 @@ class UserHomePage(QMainWindow):
                 self.gridLayout.addWidget(media_image)
                 self.gridLayout.addWidget(self.media_button)
 
-         
+        #displays message when user has no favorites
         else:
             no_favs_label = QLabel(self.centralwidget)
             no_favs_label.setGeometry(QRect(320, 20, 101, 31))
             no_favs_label.setText('Click "Search Media" to find your favorite movies and shows!')
             no_favs_label.setStyleSheet("font-size: 13px;")
             no_favs_label.setAlignment(Qt.AlignCenter)
-            #self.no_favs_label
             self.gridLayout.addWidget(no_favs_label)
             self.gridLayout.addWidget(no_favs_label)
             
-        
-        
         self.NumFavsLabel.setText(str(numFavs))
         widget = QWidget()
         widget.setLayout(self.gridLayout)
         self.scrollArea.setWidget(widget)
 
+    #references backend to perform search and updates scroll area in search page with results
     def updateSearchOptions(self):
         sort_method = self.searchWindow.SortByBoxSearch.currentText()
         search_method = self.searchWindow.SortByBoxSearch_2.currentText()
         search_query = self.searchWindow.textEdit.text()
-        # print(sort_method, search_method, search_query)
         media = psql.getSearchMedia(sort_method, search_method, search_query)
-        # print(media)
-
-        # clear gridlayout
-        #num_delete = self.searchWindow.gridLayout.count()
-        #for i in range(num_delete):
-         #    if self.searchWindow.gridLayout.itemAt(i):
-          #       self.searchWindow.gridLayout.itemAt(i).widget().deleteLater()
 
         self.searchWindow.gridLayoutWidget = QWidget(self.centralwidget)
         self.searchWindow.gridLayoutWidget.setObjectName(u"gridLayoutWidget")
@@ -336,6 +324,8 @@ class UserHomePage(QMainWindow):
         widget = QWidget()
         widget.setLayout(self.searchWindow.gridLayout)
         self.searchWindow.scrollArea.setWidget(widget)
+
+        #finds all media resulting from search and adds image to scroll area
         numMedia = len(media)
         if numMedia > 0:
             for item in media:
@@ -357,6 +347,8 @@ class UserHomePage(QMainWindow):
 
                 self.searchWindow.gridLayout.addWidget(media_image)
                 self.searchWindow.gridLayout.addWidget(media_button)
+
+        #displays message if no search results are found
         else:
             noResultsLabel = newLabel(self.centralwidget, "noResultsLabel", (320, 20, 700, 31))
             noResultsLabel.setText('No movies/shows could be found with the ' + search_method.lower() + ': ' + search_query)
@@ -370,11 +362,11 @@ class UserHomePage(QMainWindow):
         widget.setLayout(self.searchWindow.gridLayout)
         self.searchWindow.scrollArea.setWidget(widget)
 
+    #quits application if home page is closed
     def closeEvent(self, event):
         quit()
 
-    
-
+#helper method for creating labels  
 def newLabel(widget, name, geometry):
         label = QLabel(widget)
         label.setObjectName(name)

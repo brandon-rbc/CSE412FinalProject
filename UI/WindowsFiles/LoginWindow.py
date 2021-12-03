@@ -3,6 +3,7 @@ from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect, Qt)
 from PySide6.QtWidgets import (QLabel, QMainWindow, QPushButton)
 
 class LoginWindow(QMainWindow):
+    #initializes all elements of LoginWindow including UI
     def __init__(self):
         super().__init__()
         self.setFixedSize(261, 138)
@@ -34,18 +35,16 @@ class LoginWindow(QMainWindow):
         self.textEdit_3.setGeometry(QRect(180, 70, 41, 21))
         self.textEdit_3.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.textEdit_3.setText('m')
-        # self.loginButton = QPushButton(LoginWindow, clicked=lambda: self.updateUser())
         self.loginButton = QPushButton(self)
         self.loginButton.setObjectName(u"pushButton")
         self.loginButton.setGeometry(QRect(170, 110, 75, 24))
-        # self.loginButton.clicked.connect(self.updateUser)
 
         self.retranslateUi(self)
 
         QMetaObject.connectSlotsByName(self)
-        # setupUi
 
-    def retranslateUi(self, LoginWindow):#qtdesign generated code
+    #qtdesigner generated code
+    def retranslateUi(self, LoginWindow):
         LoginWindow.setWindowTitle(QCoreApplication.translate("LoginWindow", u"Login", None))
         self.label.setText(QCoreApplication.translate("LoginWindow", u"User Info", None))
         self.label_2.setText(QCoreApplication.translate("LoginWindow", u"Username:", None))
