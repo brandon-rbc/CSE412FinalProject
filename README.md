@@ -89,27 +89,76 @@ We'll break this down into a few sections.
 Pages:
 
 1. [User Page](#User-Page)
+    1. [Find Media](#find-media)
+    2. [Changing User](#changing-user)
 2. [Media Search](#Media-Search)
+    1. [Searching](#searching)
+    2. [Sorting](#sorting)
 3. [Movie Info](#Movie-Info)
+    1. [Favoriting](#favoriting)
+    2. [Remove Favorite](#remove-favorite)
 4. [Show Info](#Show-Info)
 
 ## User Page
+The User Page is the home page of FilmFriend. On this page, the user can view their information (such as age, gender and # of favorites) as well as view their list of favorite movies and TV shows. This list can either be sorted by rating or title. (Visit [favoriting](#Favoriting) to learn how to add favorites).
+![Alt text](./Assets/homepage.png)
 
+### Find Media
+To browse/search FilmFriend's title catalog, click on "Search Media" button located at the top left of the User Page. 
+
+![Alt text](./Assets/searchmedia.png)
+
+This will display the [Media Search](#media-search) page.
+
+
+### Changing User
+To change current user, click the "Not You?" button located in the user information section. 
+
+![Alt text](./Assets/notyou.png)
+
+This will display a login page where you can enter in new user information. Click "Log In" button on the bottom of this page to log in.
+
+![Alt text](./Assets/login.png)
 
 ## Media Search
+On the Media Search page, users can browse FilmFriend's extensive media collection.
+
+![Alt text](./Assets/searchpage.png)
+
+### Searching
+To search for specific movies/shows, first type in desired search query in the text box (ex. "Squid Game"). 
+![Alt text](./Assets/search.png)
+
+Then, select corresponding category from "Search By" drop-down menu (ex. "Title).
+
+![Alt text](./Assets/searchbytitle.png)
+
+The resulting movies/shows will then populate the screen below.
+
+### Sorting
+To sort movies/shows, select desired sort criteria (ex. "Rating").
+
+![Alt text](./Assets/sortbyrating.png)
+
+This sort will be performed on whichever movies/shows are displayed in the screen below.
 
 
 ## Movie Info
+After clicking on a movie title on either the User Page or Media Search Page, the Movie Info page of that specific movie will be displayed. This page contains various information about the movie (Title, Director, Rating, etc.)
+![Alt text](./Assets/moviepage.png)
+
+### Favoriting
+On the Movie Info page, users can choose to add the movie to their favorites list. To do this, simply click the "Add to Favorites" button on the bottom of the Movie Info window. Once a movie is added to favorites, it will then be displayed in the User Page.
+
+![Alt text](./Assets/addtofavorites.png)
+
+### Remove Favorite
+If a movie is already in a user's favorite list, the user can remove by clicking the "Remove from Favorites" button on the bottom of the Movie Info window. Once a movie is removed from favorites, it will also be removed from the User Page.
+
+![Alt text](./Assets/removefromfavorites.png)
 
 ## Show Info
+After clicking on a show title on either the User Page or Media Search Page, the Show Info page of that specific show will be displayed. This page contains various information about the show (Title, Director, Rating, etc.)
+![Alt text](./Assets/showpage.png)
 
-Actions:
-1. [Browsing](#browsing)
-2. [Searching](#searching)
-3. [Favoriting](#favoriting)
-
-## Browsing
-
-## Searching
-
-## Favoriting
+To add/remove show from favorites, follow [favoriting](#favoriting) or [remove favorite](#remove-favorite) in Movie Info section.
