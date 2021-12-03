@@ -16,8 +16,11 @@ This includes **Python 3.8**, **PostgreSQL**, and **PyCharm6**, as well as the c
 You must first install the following dependencies before running this software:
  1. Python(3.8)
  2. PostgreSQL(12.4+)
- 3. PyQT5 (5.15.1)
- 4. Pip (2.21+)
+ 3. Pip (2.21+)
+ 4. PySide6 (6.2.1)
+ 5. Psycopg2 (Binary v2.9.2)
+
+This involves installing python libraries, which will be covered down inhe [Libraries](#libraries) section below.
 
 After installing the dependencies, open up a window of Windows PowerShell. 
 In PowerShell, begin by typing
@@ -45,7 +48,7 @@ Then, copy and paste the link to our repository (https://github.com/brandon-rbc/
 Click Clone. You may be asked to log into GitHub. If so, click "Log in with GitHub," and then click the Authorize button when the new page is opened. 
 
 ## Libraries
-We must install a few python libraries. To do so, open the terminal in PyCharm and run these:
+We must install a few python libraries. To do so, open the terminal for your new projcet in PyCharm and run these:
 ```
 > pip install pyside6
 ```
@@ -99,7 +102,7 @@ We must make and fill our database tables for the program to interact with. This
 > .\psql -d $USER -f fill_tables.sql
 ```
 ## Connecting database to program
-Lastly, we must make sure that our program is connecting to the correct instance of postgres running locally. To do so, locate and open the `handlers.py` file in the `\backend` directory. Once open, change the port values on line 12 and line 22 to 8888, and change the "user" values on line 9 and line 19 to your computer's username. This can be found ny typing `whoami` in a powershell terminal. (Keep in mind that this will return an all lowercased version of your username, and to verify the capitalization you can locate the `C:\Users\` folder and find the matching username.
+Lastly, we must make sure that our program is connecting to the correct instance of postgres running locally. To do so, locate and open the `handlers.py` file in the `\backend` directory. Once open, change the port values on line 12 and line 22 to 8888 (if you set PGHOST=localhost, change these lines to 5432), and change the "user" values on line 9 and line 19 to your computer's username. This can be found ny typing `whoami` in a powershell terminal. (Keep in mind that this will return an all lowercased version of your username, and to verify the capitalization you can locate the `C:\Users\` folder and find the matching username.
 
 
 # Tutorial/How to Use
