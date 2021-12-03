@@ -104,8 +104,9 @@ We must make and fill our database tables for the program to interact with. This
 ```
 > .\psql -d $USER -f C:\Users\(your username)\PycharmProjects\CSE412FinalProject\psql_scripts\fill_tables.sql
 ```
+If you are having troubles getting the bottom two lines to work, simply change the $USER part to whatever your username is on your computer. This can be found ny typing `whoami` in a powershell terminal. (Keep in mind that this will return an all lowercased version of your username, and to verify the capitalization you can locate the `C:\Users\` folder and find the matching username.
 ## Connecting database to program
-Lastly, we must make sure that our program is connecting to the correct instance of postgres running locally. To do so, locate and open the `handlers.py` file in the `\backend` directory. Once open, change the port values on line 12 and line 22 to 8888 (if you set PGHOST=localhost, change these lines to 5432), and change the "user" values on line 9 and line 19 to your computer's username. This can be found ny typing `whoami` in a powershell terminal. (Keep in mind that this will return an all lowercased version of your username, and to verify the capitalization you can locate the `C:\Users\` folder and find the matching username.
+Lastly, we must make sure that our program is connecting to the correct instance of postgres running locally. To do so, locate and open the `handlers.py` file in the `\backend` directory. Once open, change the port values on line 12 and line 22 to 8888 (if you set PGHOST=localhost, change these lines to 5432), and change the "user" values on line 9 and line 19 to your computer's username. 
 
 
 # Tutorial/How to Use
