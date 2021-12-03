@@ -1,0 +1,332 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.1
+-- Dumped by pg_dump version 14.1
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'WIN1252';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: director; Type: TABLE; Schema: public; Owner: acgfo
+--
+
+CREATE TABLE public.director (
+    directorid integer NOT NULL,
+    name character varying(100),
+    dateofbirth date,
+    dateofdeath date
+);
+
+
+ALTER TABLE public.director OWNER TO acgfo;
+
+--
+-- Name: directs; Type: TABLE; Schema: public; Owner: acgfo
+--
+
+CREATE TABLE public.directs (
+    directorid integer NOT NULL,
+    mediaid integer NOT NULL
+);
+
+
+ALTER TABLE public.directs OWNER TO acgfo;
+
+--
+-- Name: favoritedBy; Type: TABLE; Schema: public; Owner: acgfo
+--
+
+CREATE TABLE public."favoritedBy" (
+    userid integer NOT NULL,
+    mediaid integer NOT NULL,
+    dateadded date
+);
+
+
+ALTER TABLE public."favoritedBy" OWNER TO acgfo;
+
+--
+-- Name: mediaObject; Type: TABLE; Schema: public; Owner: acgfo
+--
+
+CREATE TABLE public."mediaObject" (
+    mediaid integer NOT NULL,
+    name character varying(100),
+    synopsis character varying(255),
+    year integer,
+    poster_url character varying(2000),
+    genres character varying[],
+    rating numeric
+);
+
+
+ALTER TABLE public."mediaObject" OWNER TO acgfo;
+
+--
+-- Name: movie; Type: TABLE; Schema: public; Owner: acgfo
+--
+
+CREATE TABLE public.movie (
+    mediaid integer NOT NULL,
+    runtime integer
+);
+
+
+ALTER TABLE public.movie OWNER TO acgfo;
+
+--
+-- Name: show; Type: TABLE; Schema: public; Owner: acgfo
+--
+
+CREATE TABLE public.show (
+    mediaid integer NOT NULL,
+    numseasons integer,
+    numepisodes integer
+);
+
+
+ALTER TABLE public.show OWNER TO acgfo;
+
+--
+-- Name: user; Type: TABLE; Schema: public; Owner: acgfo
+--
+
+CREATE TABLE public."user" (
+    userid integer NOT NULL,
+    age integer,
+    username character varying(100),
+    gender character(1),
+    CONSTRAINT user_age_check CHECK ((age < 120))
+);
+
+
+ALTER TABLE public."user" OWNER TO acgfo;
+
+--
+-- Data for Name: director; Type: TABLE DATA; Schema: public; Owner: acgfo
+--
+
+COPY public.director (directorid, name, dateofbirth, dateofdeath) FROM stdin;
+1	Orson Welles	1915-05-06	1985-10-10
+2	Steven Spielberg	1946-12-18	\N
+3	Alfred Hitchcock	1899-08-13	1980-04-29
+4	Quinten Tarantino	1963-03-27	\N
+5	Tim Burton	1958-08-25	\N
+6	Lee Toland Krieger	1983-01-24	\N
+7	Hwamg Dong-hyuk	1971-05-26	\N
+8	Scott Frank	1960-03-10	\N
+9	Steve Franks	1965-09-21	\N
+10	John Wells	1956-05-28	\N
+\.
+
+
+--
+-- Data for Name: directs; Type: TABLE DATA; Schema: public; Owner: acgfo
+--
+
+COPY public.directs (directorid, mediaid) FROM stdin;
+1	1
+2	2
+3	3
+4	4
+5	5
+6	6
+7	7
+8	8
+9	9
+10	10
+\.
+
+
+--
+-- Data for Name: favoritedBy; Type: TABLE DATA; Schema: public; Owner: acgfo
+--
+
+COPY public."favoritedBy" (userid, mediaid, dateadded) FROM stdin;
+1	7	2021-10-28
+5	2	2020-03-13
+1	2	2021-04-30
+4	1	2015-03-06
+2	10	2019-07-09
+\.
+
+
+--
+-- Data for Name: mediaObject; Type: TABLE DATA; Schema: public; Owner: acgfo
+--
+
+COPY public."mediaObject" (mediaid, name, synopsis, year, poster_url, genres, rating) FROM stdin;
+1	Citizen Kane	When a killer shark unleashes chaos on beach community off Long Island, it's up to a local sheriff, a marine biologist, and an old seafarer to hunt the beast down.	1941	https://m.media-amazon.com/images/M/MV5BYjBiOTYxZWItMzdiZi00NjlkLWIzZTYtYmFhZjhiMTljOTdkXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg	{Drama,Mystery}	8.3
+2	Jaws	Following the death of publishing tycoon Charles Foster Kane, reporters scramble to uncover the meaning of his final utterance; 'Rosebud'.	1975	https://m.media-amazon.com/images/M/MV5BMmVmODY1MzEtYTMwZC00MzNhLWFkNDMtZjAwM2EwODUxZTA5XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_FMjpg_UX1000_.jpg	{Adventure,Thriller}	8.0
+3	Psycho	A Phoenix secretary embezzles $40,000 from her employer's client, goes on the run, and checks into a remote motel run by a young man under the domination of his mother.	1960	https://m.media-amazon.com/images/M/MV5BNTQwNDM1YzItNDAxZC00NWY2LTk0M2UtNDIwNWI5OGUyNWUxXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg	{Horror,Mystery,Thriller}	8.5
+4	Kill Bill: Vol. 1	After awakening from a four-year coma, a former assassin wreaks vengeance on the team of assassins who betrayed her.	2003	https://m.media-amazon.com/images/M/MV5BNzM3NDFhYTAtYmU5Mi00NGRmLTljYjgtMDkyODQ4MjNkMGY2XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg	{Action,Crime,Drama}	8.1
+5	The Nightmare Before Christmas	Jack Skellington, king of Halloween Town, discovers Christmas Town, but his attempts to bring Christmas to his home causes confusion.	1993	https://m.media-amazon.com/images/M/MV5BNWE4OTNiM2ItMjY4Ni00ZTViLWFiZmEtZGEyNGY2ZmNlMzIyXkEyXkFqcGdeQXVyMDU5NDcxNw@@._V1_FMjpg_UX1000_.jpg	{Animation,Family,Fantasy}	8.0
+6	You	A dangerously charming, intensely obsessive young man goes to extreme measures to insert himself into the lives of those he is transfixed by.	2018	https://m.media-amazon.com/images/M/MV5BMzkzOGFiY2EtZDcyZi00OWNhLThhNmYtYjQ3ODljMTM5ZDBkXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_FMjpg_UX1000_.jpg	{Crime,Drama,Romance}	7.7
+7	Squid Game	Hundreds of cash-strapped players accept a strange invitation to compete in children's games. Inside, a tempting prize awaits with deadly high stakes. A survival game that has a whopping 45.6 billion-won prize at stake.	2021	https://m.media-amazon.com/images/M/MV5BYWE3MDVkN2EtNjQ5MS00ZDQ4LTliNzYtMjc2YWMzMDEwMTA3XkEyXkFqcGdeQXVyMTEzMTI1Mjk3._V1_FMjpg_UX1000_.jpg	{Action,Drama,Mystery}	8.1
+8	The Queen's Gambit	Orphaned at the tender age of nine, prodigious introvert Beth Harmon discovers and masters the game of chess in 1960s USA. But child stardom comes at a price.	2020	https://m.media-amazon.com/images/M/MV5BM2EwMmRhMmUtMzBmMS00ZDQ3LTg4OGEtNjlkODk3ZTMxMmJlXkEyXkFqcGdeQXVyMjM5ODk1NDU@._V1_FMjpg_UX1000_.jpg	{Drama}	8.6
+9	Psych	A novice sleuth is hired by the Police after he cons them into thinking he has psychic powers which help solve crimes. With the assistance of his reluctant best friend, the duo take on a series of complicated cases.	2006	https://m.media-amazon.com/images/M/MV5BYzRkOWRmNGUtYzM0Zi00ZGRkLThhMjktNmI4NDYwZDVmODBkXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_FMjpg_UX1000_.jpg	{Comedy,Crime,Mystery}	8.3
+10	Shameless	A scrappy, feisty, fiercely loyal Chicago family makes no apologies.	2011	https://m.media-amazon.com/images/M/MV5BZDgxNjQ2MjMtMjk2Yi00M2Q2LWI0ZDktOGM1NWI5YWUzMjk4XkEyXkFqcGdeQXVyOTA3MTMyOTk@._V1_FMjpg_UX1000_.jpg	{Comedy,Drama}	8.5
+\.
+
+
+--
+-- Data for Name: movie; Type: TABLE DATA; Schema: public; Owner: acgfo
+--
+
+COPY public.movie (mediaid, runtime) FROM stdin;
+1	119
+2	124
+3	109
+4	111
+5	76
+\.
+
+
+--
+-- Data for Name: show; Type: TABLE DATA; Schema: public; Owner: acgfo
+--
+
+COPY public.show (mediaid, numseasons, numepisodes) FROM stdin;
+6	3	31
+7	1	9
+8	1	7
+9	8	121
+10	1	134
+\.
+
+
+--
+-- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: acgfo
+--
+
+COPY public."user" (userid, age, username, gender) FROM stdin;
+1	21	bccampos	m
+2	24	jmcroft	f
+3	19	jemmyjamerson	f
+4	55	aaronmoviefan29	m
+5	50	joebiden	m
+\.
+
+
+--
+-- Name: director director_pkey; Type: CONSTRAINT; Schema: public; Owner: acgfo
+--
+
+ALTER TABLE ONLY public.director
+    ADD CONSTRAINT director_pkey PRIMARY KEY (directorid);
+
+
+--
+-- Name: directs directs_pkey; Type: CONSTRAINT; Schema: public; Owner: acgfo
+--
+
+ALTER TABLE ONLY public.directs
+    ADD CONSTRAINT directs_pkey PRIMARY KEY (directorid, mediaid);
+
+
+--
+-- Name: favoritedBy favoritedBy_pkey; Type: CONSTRAINT; Schema: public; Owner: acgfo
+--
+
+ALTER TABLE ONLY public."favoritedBy"
+    ADD CONSTRAINT "favoritedBy_pkey" PRIMARY KEY (userid, mediaid);
+
+
+--
+-- Name: mediaObject mediaObject_pkey; Type: CONSTRAINT; Schema: public; Owner: acgfo
+--
+
+ALTER TABLE ONLY public."mediaObject"
+    ADD CONSTRAINT "mediaObject_pkey" PRIMARY KEY (mediaid);
+
+
+--
+-- Name: movie movie_pkey; Type: CONSTRAINT; Schema: public; Owner: acgfo
+--
+
+ALTER TABLE ONLY public.movie
+    ADD CONSTRAINT movie_pkey PRIMARY KEY (mediaid);
+
+
+--
+-- Name: show show_pkey; Type: CONSTRAINT; Schema: public; Owner: acgfo
+--
+
+ALTER TABLE ONLY public.show
+    ADD CONSTRAINT show_pkey PRIMARY KEY (mediaid);
+
+
+--
+-- Name: user user_pkey; Type: CONSTRAINT; Schema: public; Owner: acgfo
+--
+
+ALTER TABLE ONLY public."user"
+    ADD CONSTRAINT user_pkey PRIMARY KEY (userid);
+
+
+--
+-- Name: directs directs_directorid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: acgfo
+--
+
+ALTER TABLE ONLY public.directs
+    ADD CONSTRAINT directs_directorid_fkey FOREIGN KEY (directorid) REFERENCES public.director(directorid) ON DELETE CASCADE;
+
+
+--
+-- Name: directs directs_mediaid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: acgfo
+--
+
+ALTER TABLE ONLY public.directs
+    ADD CONSTRAINT directs_mediaid_fkey FOREIGN KEY (mediaid) REFERENCES public."mediaObject"(mediaid) ON DELETE CASCADE;
+
+
+--
+-- Name: favoritedBy favoritedBy_mediaid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: acgfo
+--
+
+ALTER TABLE ONLY public."favoritedBy"
+    ADD CONSTRAINT "favoritedBy_mediaid_fkey" FOREIGN KEY (mediaid) REFERENCES public."mediaObject"(mediaid) ON DELETE CASCADE;
+
+
+--
+-- Name: favoritedBy favoritedBy_userid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: acgfo
+--
+
+ALTER TABLE ONLY public."favoritedBy"
+    ADD CONSTRAINT "favoritedBy_userid_fkey" FOREIGN KEY (userid) REFERENCES public."user"(userid) ON DELETE CASCADE;
+
+
+--
+-- Name: movie movie_mediaid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: acgfo
+--
+
+ALTER TABLE ONLY public.movie
+    ADD CONSTRAINT movie_mediaid_fkey FOREIGN KEY (mediaid) REFERENCES public."mediaObject"(mediaid) ON DELETE CASCADE;
+
+
+--
+-- Name: show show_mediaid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: acgfo
+--
+
+ALTER TABLE ONLY public.show
+    ADD CONSTRAINT show_mediaid_fkey FOREIGN KEY (mediaid) REFERENCES public."mediaObject"(mediaid) ON DELETE CASCADE;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
