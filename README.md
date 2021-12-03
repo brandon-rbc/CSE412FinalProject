@@ -45,7 +45,7 @@ Then, copy and paste the link to our repository (https://github.com/brandon-rbc/
 Click Clone. You may be asked to log into GitHub. If so, click "Log in with GitHub," and then click the Authorize button when the new page is opened. 
 
 ## Libraries
-We must install a few python libraries. To do so, open the terminal in pycharm and run these:
+We must install a few python libraries. To do so, open the terminal in PyCharm and run these:
 ```
 > pip install pyside6
 ```
@@ -91,7 +91,7 @@ Now that the database is started, create a user by typing
 This creates a user for the database. 
 
 ## Create/Fill database tables
-We must make and fill our database tables for the program to interact with. This involves us changing directories to the /psql_scripts directory and running:
+We must make and fill our database tables for the program to interact with. This involves us changing directories to the \psql_scripts directory and running:
 ```
 > .\psql -d $USER -f create_tables.sql
 ```
