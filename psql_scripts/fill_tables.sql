@@ -17,14 +17,14 @@ INSERT INTO "director" VALUES ('10', 'John Wells', '1956-5-28', NULL);
 
 INSERT INTO "mediaObject" VALUES ('1',
                                   'Citizen Kane',
-                                  'When a killer shark unleashes chaos on beach community off Long Island, it''s up to a local sheriff, a marine biologist, and an old seafarer to hunt the beast down.',
+                                  'Following the death of publishing tycoon Charles Foster Kane, reporters scramble to uncover the meaning of his final utterance; ''Rosebud''.',
                                   '1941',
                                   'https://m.media-amazon.com/images/M/MV5BYjBiOTYxZWItMzdiZi00NjlkLWIzZTYtYmFhZjhiMTljOTdkXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg',
                                   '{Drama, Mystery}',
                                   '8.3');
 INSERT INTO "mediaObject" VALUES ('2',
                                   'Jaws',
-                                  'Following the death of publishing tycoon Charles Foster Kane, reporters scramble to uncover the meaning of his final utterance; ''Rosebud''.',
+                                  'When a killer shark unleashes chaos on beach community off Long Island, it''s up to a local sheriff, a marine biologist, and an old seafarer to hunt the beast down.',
                                   '1975',
                                   'https://m.media-amazon.com/images/M/MV5BMmVmODY1MzEtYTMwZC00MzNhLWFkNDMtZjAwM2EwODUxZTA5XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_FMjpg_UX1000_.jpg',
                                   '{Adventure, Thriller}',
